@@ -39,9 +39,16 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             text-align: center;
             padding: 4rem 2rem;
+        }
+        .hero img {
+            max-width: 250px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
         }
         .hero h2 {
             font-size: 2.5rem;
@@ -95,12 +102,8 @@
     </nav>
 </header>
 
-  <video autoplay loop muted playsinline>
-    <source src="ishavasyam.m4v" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  
 <section class="hero">
+    <img src="ishavasyam.png" alt="Ishavasyam Logo">
     <h2>Exploring the Future with Quantum Computing</h2>
     <p>
         Ishavasyam is dedicated to advancing the study of Quantum Computing,
@@ -146,19 +149,6 @@
 <footer>
     &copy; 2025 Ishavasyam. All rights reserved.
 </footer>
-
-<script>
-    // Simple scroll animation effect
-    document.addEventListener('scroll', () => {
-        document.querySelectorAll('.card').forEach(card => {
-            const rect = card.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 50) {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }
-        });
-    });
-</script>
 
 </body>
 </html>
