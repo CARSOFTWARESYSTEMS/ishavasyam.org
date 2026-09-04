@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://ishavasyam.org/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://ishavasyam.org/images/ishavasyam-space-research-hero-wallpaper-v1.png</image:loc>
+      <image:title>Maha Vishnu and the Cosmos — Ishavasyam.org Space Research Organisation</image:title>
+      <image:caption>Artistic depiction of Maha Vishnu reclining upon Ananta Shesha in a cosmic ocean, surrounded by planets, stars and scientific orbital paths.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ishavasyam.org/images/ishavasyam-guru.png</image:loc>
+      <image:title>Guided by Timeless Wisdom</image:title>
+      <image:caption>Bronze statue of the revered Guru seated in a meditative posture with a blessing gesture.</image:caption>
+    </image:image>
+  </url>
+</urlset>

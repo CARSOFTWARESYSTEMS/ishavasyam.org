@@ -1,156 +1,349 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ishavasyam – Quantum Computing</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
-            color: white;
-            overflow-x: hidden;
-        }
-        header {
-            padding: 1rem 2rem;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.3);
-        }
-        header h1 {
-            font-size: 2rem;
-            letter-spacing: 2px;
-            color: #00e6ff;
-        }
-        nav {
-            margin-top: 1rem;
-        }
-        nav a {
-            color: #fff;
-            margin: 0 1rem;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #00e6ff;
-        }
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 4rem 2rem;
-        }
-        .hero img {
-            max-width: 250px;
-            width: 100%;
-            height: auto;
-            display: block;
-            margin-bottom: 1.5rem;
-            border-radius: 10px;
-        }
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #00e6ff;
-        }
-        .hero p {
-            max-width: 600px;
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: #ddd;
-        }
-        .section {
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: transform 0.3s ease, background 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-8px);
-            background: rgba(0, 230, 255, 0.1);
-        }
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            font-size: 0.9rem;
-            color: #aaa;
-            background: rgba(0,0,0,0.4);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ishavasyam.org | Space Research, Indic Cosmology & Consciousness</title>
+<meta name="description" content="Ishavasyam.org explores space science, astronomy, Indic cosmology and consciousness through respectful scholarship and evidence-based scientific inquiry.">
+<meta name="keywords" content="space research, astronomy, space science, Indic cosmology, ancient Indian cosmology, consciousness studies, Maha Vishnu, scientific inquiry, Ishavasyam.org">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://ishavasyam.org/">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<meta name="theme-color" content="#050718">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ishavasyam.org">
+<meta property="og:title" content="Ishavasyam.org | Space Research, Indic Cosmology & Consciousness">
+<meta property="og:description" content="Ishavasyam.org explores space science, astronomy, Indic cosmology and consciousness through respectful scholarship and evidence-based scientific inquiry.">
+<meta property="og:url" content="https://ishavasyam.org/">
+<meta property="og:image" content="https://ishavasyam.org/images/ishavasyam-space-research-og.png">
+<meta property="og:image:secure_url" content="https://ishavasyam.org/images/ishavasyam-space-research-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="Maha Vishnu overlooking a cosmic ocean and planetary system, representing the meeting of ancient wisdom and space exploration.">
+<meta property="og:locale" content="en_IN">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ishavasyam.org | Space Research, Indic Cosmology & Consciousness">
+<meta name="twitter:description" content="Ishavasyam.org explores space science, astronomy, Indic cosmology and consciousness through respectful scholarship and evidence-based scientific inquiry.">
+<meta name="twitter:image" content="https://ishavasyam.org/images/ishavasyam-space-research-og.png">
+<meta name="twitter:image:alt" content="Maha Vishnu overlooking a cosmic ocean and planetary system, representing the meeting of ancient wisdom and space exploration.">
+
+<!-- Favicon (inline SVG: gold orbit ring on midnight navy, no build step required) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050718'/%3E%3Cellipse cx='32' cy='32' rx='24' ry='10' fill='none' stroke='%23D7B567' stroke-width='3' transform='rotate(-25 32 32)'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23D7B567'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=Noto+Serif+Devanagari:wght@500;600&amp;display=swap" rel="stylesheet">
+
+<!-- Hero is the LCP element: preload the format-matched candidates so the browser can fetch it immediately -->
+<link rel="preload" as="image" href="images/ishavasyam-space-research-hero-wallpaper-v1.avif" type="image/avif" fetchpriority="high">
+<link rel="preload" as="image" href="images/ishavasyam-space-research-hero-wallpaper-v1.webp" type="image/webp" fetchpriority="high">
+<link rel="stylesheet" href="styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "ResearchOrganization"],
+      "@id": "https://ishavasyam.org/#organization",
+      "name": "Ishavasyam.org",
+      "alternateName": "Ishavasyam Space Research Organisation",
+      "url": "https://ishavasyam.org/",
+      "email": "carsoftwaresystems@gmail.com",
+      "description": "Ishavasyam.org explores space science, astronomy, Indic cosmology and consciousness through respectful scholarship and evidence-based scientific inquiry.",
+      "image": { "@id": "https://ishavasyam.org/images/ishavasyam-space-research-hero-wallpaper-v1.png#primaryimage" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://ishavasyam.org/#website",
+      "name": "Ishavasyam.org",
+      "url": "https://ishavasyam.org/",
+      "description": "Ishavasyam.org explores space science, astronomy, Indic cosmology and consciousness through respectful scholarship and evidence-based scientific inquiry.",
+      "inLanguage": "en-IN",
+      "publisher": { "@id": "https://ishavasyam.org/#organization" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://ishavasyam.org/#webpage",
+      "url": "https://ishavasyam.org/",
+      "name": "Ishavasyam.org | Space Research, Indic Cosmology & Consciousness",
+      "description": "Ishavasyam.org explores space science, astronomy, Indic cosmology and consciousness through respectful scholarship and evidence-based scientific inquiry.",
+      "inLanguage": "en-IN",
+      "isPartOf": { "@id": "https://ishavasyam.org/#website" },
+      "about": { "@id": "https://ishavasyam.org/#organization" },
+      "primaryImageOfPage": { "@id": "https://ishavasyam.org/images/ishavasyam-space-research-hero-wallpaper-v1.png#primaryimage" },
+      "image": { "@id": "https://ishavasyam.org/images/ishavasyam-space-research-hero-wallpaper-v1.png#primaryimage" }
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://ishavasyam.org/images/ishavasyam-space-research-hero-wallpaper-v1.png#primaryimage",
+      "contentUrl": "https://ishavasyam.org/images/ishavasyam-space-research-hero-wallpaper-v1.png",
+      "url": "https://ishavasyam.org/images/ishavasyam-space-research-hero-wallpaper-v1.png",
+      "caption": "Maha Vishnu and the Cosmos — Ishavasyam.org Space Research Organisation",
+      "width": 1672,
+      "height": 941,
+      "representativeOfPage": true
+    }
+  ]
+}
+</script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<header>
-    <h1>Ishavasyam.org</h1>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#concepts">Concepts</a>
-        <a href="#contact">Contact</a>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="#top">
+      <span class="brand-name">ISHAVASYAM.ORG</span>
+      <span class="brand-sub">Space Research Organisation</span>
+    </a>
+
+    <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+      <a href="#vision">Vision</a>
+      <a href="#research">Research</a>
+      <a href="#approach">Our Approach</a>
+      <a href="#connect">Connect</a>
+      <a class="btn btn-primary mobile-cta" href="#research">Explore the Cosmos</a>
     </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-primary" href="#research">Explore the Cosmos</a>
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
 </header>
 
-<section class="hero">
-    ॐ तस्मै श्री गुरवे नमः <br><br>
-    <img src="ishavasyam.png" alt="Ishavasyam Logo">
+<main id="main">
 
-    <h2>Exploring the Future with Quantum Computing</h2>
-    <p>
-        Ishavasyam is dedicated to advancing the study of Quantum Computing,
-        merging deep theoretical understanding with practical innovations.
-        We explore computation at the intersection of mathematics, physics,
-        and cutting-edge engineering.
-    </p>
-</section>
-
-<section id="about" class="section">
-    <h2>About Quantum Computing</h2>
-    <p>
-        Quantum Computing leverages the principles of quantum mechanics to process
-        information in fundamentally new ways. By utilizing qubits, superposition,
-        and entanglement, it has the potential to solve problems that are intractable
-        for classical computers.
-    </p>
-</section>
-
-<section id="concepts" class="section">
-    <h2>Key Areas of Focus</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>Quantum Algorithms</h3>
-            <p>Exploring Shor’s, Grover’s, and beyond – algorithms that exploit quantum properties for speed and efficiency.</p>
-        </div>
-        <div class="card">
-            <h3>Quantum Hardware</h3>
-            <p>Advancements in qubit technology, error correction, and scalable architectures for real-world applications.</p>
-        </div>
-        <div class="card">
-            <h3>Quantum Applications</h3>
-            <p>Real-world use cases in cryptography, optimization, machine learning, and materials science.</p>
-        </div>
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top" aria-labelledby="hero-heading">
+    <div class="hero-media" aria-hidden="false">
+      <picture>
+        <source srcset="images/ishavasyam-space-research-hero-wallpaper-v1.avif" type="image/avif">
+        <source srcset="images/ishavasyam-space-research-hero-wallpaper-v1.webp" type="image/webp">
+        <img
+          src="images/ishavasyam-space-research-hero-wallpaper-v1.png"
+          alt="Artistic depiction of Maha Vishnu reclining upon Ananta Shesha in a cosmic ocean, surrounded by planets, stars and scientific orbital paths."
+          title="Maha Vishnu and the Cosmos — Ishavasyam.org Space Research Organisation"
+          width="1672" height="941"
+          loading="eager" fetchpriority="high" decoding="async">
+      </picture>
     </div>
-</section>
+    <div class="hero-scrim" aria-hidden="true"></div>
 
-<section id="contact" class="section">
-    <h2>Contact</h2>
-    <p>Email: carsoftwaresystems@gmail.com</p>
-</section>
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Ishavasyam.org &middot; Space Research Organisation</span>
+        <h1 class="hero-title" id="hero-heading">Exploring the Infinite</h1>
+        <p class="hero-subtitle">Where Ancient Wisdom Inspires Scientific Exploration</p>
+        <p class="hero-description">We explore the universe through astronomy, space science, Indic cosmology and the enduring human search for meaning&mdash;combining reverence for ancient wisdom with the discipline of scientific inquiry.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#research">Explore Our Research</a>
+          <a class="btn btn-secondary" href="#approach">Discover Our Approach</a>
+        </div>
+      </div>
+    </div>
 
-<footer>
-    &copy; 2025 Ishavasyam.org. All rights reserved.
+    <span class="scroll-indicator" aria-hidden="true">
+      <span class="chevron"></span>
+    </span>
+  </section>
+
+  <!-- ================= VISION ================= -->
+  <section class="section-vision" id="vision" aria-labelledby="vision-heading">
+    <div class="container">
+      <div class="vision-grid">
+        <div class="vision-text">
+          <span class="section-label">Our Vision</span>
+          <h2 class="section-heading" id="vision-heading">One Universe. Two Ways of Knowing.</h2>
+          <p>For thousands of years, humanity has looked toward the cosmos with wonder. Sacred traditions asked profound questions about creation, time, consciousness and infinity. Modern science explores these questions through observation, mathematics, experimentation and evidence.</p>
+          <p>Ishavasyam.org creates a respectful space where these perspectives can be studied together&mdash;without confusing spiritual belief with established scientific fact.</p>
+        </div>
+        <div class="vision-motif" aria-hidden="true">
+          <svg viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="160" cy="160" rx="150" ry="60" stroke="#D7B567" stroke-width="1" opacity="0.55" transform="rotate(-18 160 160)"/>
+            <ellipse cx="160" cy="160" rx="110" ry="42" stroke="#8064C7" stroke-width="1" opacity="0.55" transform="rotate(14 160 160)"/>
+            <circle cx="160" cy="160" r="6" fill="#F1D995"/>
+            <g stroke="#D7B567" stroke-width="1" opacity="0.5">
+              <path d="M160 160 C130 120 130 80 160 50" />
+              <path d="M160 160 C190 120 190 80 160 50" />
+              <path d="M160 160 C120 140 90 150 60 130" />
+              <path d="M160 160 C200 140 230 150 260 130" />
+              <path d="M160 160 C120 180 90 170 60 190" />
+              <path d="M160 160 C200 180 230 170 260 190" />
+              <path d="M160 160 C130 200 130 240 160 270" />
+              <path d="M160 160 C190 200 190 240 160 270" />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GURU VANDANA ================= -->
+  <section class="section-guru" id="guru" aria-labelledby="guru-heading">
+    <div class="container">
+      <div class="guru-grid">
+        <div class="guru-portrait">
+          <div class="guru-frame">
+            <picture>
+              <source srcset="images/ishavasyam-guru.avif" type="image/avif">
+              <source srcset="images/ishavasyam-guru.webp" type="image/webp">
+              <img
+                src="images/ishavasyam-guru.png"
+                alt="Bronze statue of the revered Guru seated in a meditative posture with a blessing gesture."
+                width="1288" height="998"
+                loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </div>
+        <div class="guru-content">
+          <p class="guru-mantra" lang="sa">&#2323; &#2340;&#2360;&#2381;&#2350;&#2376; &#2358;&#2381;&#2352;&#2368; &#2327;&#2369;&#2352;&#2357;&#2375; &#2344;&#2350;&#2307;</p>
+          <h2 class="guru-heading" id="guru-heading">Guided by Timeless Wisdom</h2>
+          <p class="guru-text">With reverence to the Guru&mdash;the guiding light who dispels darkness, awakens knowledge and inspires the search for truth.</p>
+          <p class="guru-closing">May every exploration of the universe begin with humility, wisdom and clarity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RESEARCH ================= -->
+  <section id="research" aria-labelledby="research-heading">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Research Directions</span>
+        <h2 class="section-heading" id="research-heading">Questions as Vast as the Cosmos</h2>
+      </div>
+
+      <div class="card-grid">
+        <article class="research-card">
+          <svg class="icon" aria-hidden="true" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="24" cy="24" rx="20" ry="9" stroke="currentColor" stroke-width="1.6" transform="rotate(-20 24 24)"/>
+            <circle cx="24" cy="24" r="4.5" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="38" cy="15" r="2" fill="currentColor"/>
+          </svg>
+          <h3>Space Science &amp; Astronomy</h3>
+          <p>Explore celestial systems, planetary science, observational astronomy and the technologies enabling humanity&rsquo;s journey beyond Earth.</p>
+        </article>
+
+        <article class="research-card">
+          <svg class="icon" aria-hidden="true" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="3.4" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M24 20.6C24 14 20 9 14 8c1 6 4 10 10 12.6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M24 20.6C24 14 28 9 34 8c-1 6-4 10-10 12.6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M27 25.5C33 26 38 29.5 40 35c-6-0.5-11-4-13-9.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M21 25.5C15 26 10 29.5 8 35c6-0.5 11-4 13-9.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M24 27.4c0 6-3 9.6-8 11.6 0.6-6 3-10.4 8-11.6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M24 27.4c0 6 3 9.6 8 11.6-0.6-6-3-10.4-8-11.6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+          <h3>Indic Cosmology</h3>
+          <p>Study classical Indian perspectives on creation, cosmic time, recurring cycles and the structure of existence within their historical and philosophical contexts.</p>
+        </article>
+
+        <article class="research-card">
+          <svg class="icon" aria-hidden="true" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="5" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M6 24c4-8 10-8 14 0s10 8 14 0s10-8 14 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <h3>Consciousness &amp; Cosmos</h3>
+          <p>Encourage interdisciplinary inquiry into consciousness, perception and humanity&rsquo;s place in the universe while clearly distinguishing philosophy from experimentally validated science.</p>
+        </article>
+
+        <article class="research-card">
+          <svg class="icon" aria-hidden="true" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="14" r="3.4" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="36" cy="14" r="3.4" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="24" cy="36" r="3.4" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="24" cy="20" r="2.6" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M14.6 15.6 21.8 19.2M33.4 15.6 26.2 19.2M22.4 22.6 22 32.6M25.6 22.6 26 32.6" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+          <h3>Education &amp; Collaboration</h3>
+          <p>Create accessible learning opportunities that bring students, researchers, scientists and traditional scholars into thoughtful dialogue.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= APPROACH ================= -->
+  <section class="section-approach" id="approach" aria-labelledby="approach-heading">
+    <svg class="orbit-lines" aria-hidden="true" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="950" cy="120" rx="420" ry="150" stroke="#D7B567" stroke-width="1" transform="rotate(-12 950 120)"/>
+      <ellipse cx="950" cy="120" rx="300" ry="105" stroke="#D7B567" stroke-width="1" transform="rotate(-12 950 120)"/>
+      <ellipse cx="130" cy="620" rx="380" ry="130" stroke="#8064C7" stroke-width="1" transform="rotate(8 130 620)"/>
+    </svg>
+
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Our Approach</span>
+        <h2 class="section-heading" id="approach-heading">Inspired by Wisdom. Guided by Evidence.</h2>
+        <p class="section-intro">Ancient wisdom can inspire important questions. Scientific methods help us investigate which ideas can be observed, measured, tested and reproduced.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-number">01 &mdash; Question</span>
+          <h3>Question</h3>
+          <p>Examine profound ideas about the universe, life, time and consciousness.</p>
+        </div>
+        <div class="step">
+          <span class="step-number">02 &mdash; Investigate</span>
+          <h3>Investigate</h3>
+          <p>Apply research, observation, mathematics, critical thinking and interdisciplinary study.</p>
+        </div>
+        <div class="step">
+          <span class="step-number">03 &mdash; Share</span>
+          <h3>Share</h3>
+          <p>Communicate findings transparently, acknowledge uncertainty and invite constructive review.</p>
+        </div>
+      </div>
+
+      <div class="integrity-panel">
+        <p>Ishavasyam.org does not present spiritual narratives as scientific proof. We approach sacred knowledge with respect and scientific claims with evidence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CLOSING CTA ================= -->
+  <section class="section-connect" id="connect" aria-labelledby="connect-heading">
+    <div class="container">
+      <h2 class="connect-heading" id="connect-heading">The Universe Invites Us to Wonder&mdash;and to Investigate.</h2>
+      <p class="connect-description">Join a thoughtful exploration of space, consciousness and ancient cosmological ideas through curiosity, collaboration and scientific discipline.</p>
+      <a class="btn btn-primary" href="mailto:carsoftwaresystems@gmail.com">Connect With Ishavasyam.org</a>
+      <p class="connect-note">Write to us at carsoftwaresystems@gmail.com</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="brand-name">ISHAVASYAM.ORG</span>
+        <p class="footer-tagline">Space Research Organisation</p>
+        <p class="footer-statement">Exploring space, consciousness and cosmological wisdom with reverence and scientific integrity.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="#vision">Vision</a>
+        <a href="#research">Research</a>
+        <a href="#approach">Our Approach</a>
+        <a href="mailto:carsoftwaresystems@gmail.com">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="current-year">2026</span> Ishavasyam.org. All rights reserved.</p>
+      <p>Ishavasyam.org is an independent research and educational initiative.</p>
+    </div>
+  </div>
 </footer>
 
+<script src="script.js" defer></script>
 </body>
 </html>
