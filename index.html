@@ -37,7 +37,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=Noto+Serif+Devanagari:wght@500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;family=Inter:wght@400;500;600;700&amp;family=Noto+Serif+Devanagari:wght@500;600;700&amp;display=swap" rel="stylesheet">
 
 <!-- Hero is the LCP element: preload the format-matched candidates so the browser can fetch it immediately -->
 <link rel="preload" as="image" href="images/ishavasyam-space-research-hero-wallpaper-v1.avif" type="image/avif" fetchpriority="high">
@@ -162,16 +162,16 @@
       <div class="vision-grid">
         <div class="vision-text">
           <span class="section-label">Our Vision</span>
-          <h2 class="section-heading" id="vision-heading">One Universe. Two Ways of Knowing.</h2>
+          <h2 class="section-heading" id="vision-heading">One Universe.<br>Two Ways of Knowing.</h2>
           <p>For thousands of years, humanity has looked toward the cosmos with wonder. Sacred traditions asked profound questions about creation, time, consciousness and infinity. Modern science explores these questions through observation, mathematics, experimentation and evidence.</p>
           <p>Ishavasyam.org creates a respectful space where these perspectives can be studied together&mdash;without confusing spiritual belief with established scientific fact.</p>
         </div>
         <div class="vision-motif" aria-hidden="true">
           <svg viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="160" cy="160" rx="150" ry="60" stroke="#D7B567" stroke-width="1" opacity="0.55" transform="rotate(-18 160 160)"/>
-            <ellipse cx="160" cy="160" rx="110" ry="42" stroke="#8064C7" stroke-width="1" opacity="0.55" transform="rotate(14 160 160)"/>
-            <circle cx="160" cy="160" r="6" fill="#F1D995"/>
-            <g stroke="#D7B567" stroke-width="1" opacity="0.5">
+            <ellipse cx="160" cy="160" rx="150" ry="60" stroke="var(--gold-primary)" stroke-width="1" opacity="0.55" transform="rotate(-18 160 160)"/>
+            <ellipse cx="160" cy="160" rx="110" ry="42" stroke="var(--orbital-purple)" stroke-width="1" opacity="0.55" transform="rotate(14 160 160)"/>
+            <circle cx="160" cy="160" r="6" fill="var(--gold-hover)"/>
+            <g stroke="var(--gold-primary)" stroke-width="1" opacity="0.5">
               <path d="M160 160 C130 120 130 80 160 50" />
               <path d="M160 160 C190 120 190 80 160 50" />
               <path d="M160 160 C120 140 90 150 60 130" />
@@ -194,21 +194,40 @@
         <div class="guru-portrait">
           <div class="guru-frame">
             <picture>
-              <source srcset="images/ishavasyam-guru.avif" type="image/avif">
-              <source srcset="images/ishavasyam-guru.webp" type="image/webp">
+              <source srcset="images/ishavasyam-guru-statue.avif" type="image/avif">
+              <source srcset="images/ishavasyam-guru-statue.webp" type="image/webp">
               <img
-                src="images/ishavasyam-guru.png"
-                alt="Bronze statue of the revered Guru seated in a meditative posture with a blessing gesture."
-                width="1288" height="998"
+                src="images/ishavasyam-guru-statue.jpg"
+                alt="Bronze statue of the revered Guru seated in a meditative posture with a raised blessing gesture."
+                width="1536" height="1666"
                 loading="lazy" decoding="async">
             </picture>
           </div>
         </div>
         <div class="guru-content">
-          <p class="guru-mantra" lang="sa">&#2323; &#2340;&#2360;&#2381;&#2350;&#2376; &#2358;&#2381;&#2352;&#2368; &#2327;&#2369;&#2352;&#2357;&#2375; &#2344;&#2350;&#2307;</p>
+          <p class="guru-mantra" lang="sa-Deva">ॐ तस्मै श्री गुरवे नमः</p>
           <h2 class="guru-heading" id="guru-heading">Guided by Timeless Wisdom</h2>
           <p class="guru-text">With reverence to the Guru&mdash;the guiding light who dispels darkness, awakens knowledge and inspires the search for truth.</p>
           <p class="guru-closing">May every exploration of the universe begin with humility, wisdom and clarity.</p>
+        </div>
+      </div>
+
+      <hr class="guru-divider" aria-hidden="true">
+
+      <div class="meaning-panel">
+        <span class="section-label">The Meaning of Ishavasyam</span>
+        <h3 class="meaning-heading" id="meaning-heading">The Divine Pervades All Existence</h3>
+
+        <div class="meaning-grid">
+          <blockquote class="meaning-verse" lang="sa-Deva">
+            <p>ईशावास्यमिदं सर्वं यत्किञ्च जगत्यां जगत्।<br>तेन त्यक्तेन भुञ्जीथा मा गृधः कस्यस्विद्धनम्॥</p>
+            <cite>&mdash; Isha Upanishad, Mantra 1</cite>
+          </blockquote>
+
+          <div class="meaning-text">
+            <p>&ldquo;Ishavasyam&rdquo; may be understood as &ldquo;all existence is pervaded or enveloped by the Divine.&rdquo; The verse teaches that everything within this changing universe is interconnected and sacred. It invites us to live with restraint and gratitude, accepting what is entrusted to us without coveting what belongs to another.</p>
+            <p class="meaning-connection">This vision inspires Ishavasyam.org to approach the universe with humility&mdash;to observe it with wonder, investigate it with scientific discipline and treat creation with responsibility.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -274,33 +293,30 @@
   <!-- ================= APPROACH ================= -->
   <section class="section-approach" id="approach" aria-labelledby="approach-heading">
     <svg class="orbit-lines" aria-hidden="true" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="950" cy="120" rx="420" ry="150" stroke="#D7B567" stroke-width="1" transform="rotate(-12 950 120)"/>
-      <ellipse cx="950" cy="120" rx="300" ry="105" stroke="#D7B567" stroke-width="1" transform="rotate(-12 950 120)"/>
-      <ellipse cx="130" cy="620" rx="380" ry="130" stroke="#8064C7" stroke-width="1" transform="rotate(8 130 620)"/>
+      <ellipse cx="950" cy="120" rx="420" ry="150" stroke="var(--gold-primary)" stroke-width="1" transform="rotate(-12 950 120)"/>
+      <ellipse cx="950" cy="120" rx="300" ry="105" stroke="var(--gold-primary)" stroke-width="1" transform="rotate(-12 950 120)"/>
+      <ellipse cx="130" cy="620" rx="380" ry="130" stroke="var(--orbital-purple)" stroke-width="1" transform="rotate(8 130 620)"/>
     </svg>
 
     <div class="container">
       <div class="section-head">
         <span class="section-label">Our Approach</span>
-        <h2 class="section-heading" id="approach-heading">Inspired by Wisdom. Guided by Evidence.</h2>
+        <h2 class="section-heading" id="approach-heading">Inspired by Wisdom.<br>Guided by Evidence.</h2>
         <p class="section-intro">Ancient wisdom can inspire important questions. Scientific methods help us investigate which ideas can be observed, measured, tested and reproduced.</p>
       </div>
 
       <div class="steps">
         <div class="step">
-          <span class="step-number">01 &mdash; Question</span>
-          <h3>Question</h3>
-          <p>Examine profound ideas about the universe, life, time and consciousness.</p>
+          <p class="step-number">01 &mdash; Question</p>
+          <p class="step-description">Examine profound ideas about the universe, life, time and consciousness.</p>
         </div>
         <div class="step">
-          <span class="step-number">02 &mdash; Investigate</span>
-          <h3>Investigate</h3>
-          <p>Apply research, observation, mathematics, critical thinking and interdisciplinary study.</p>
+          <p class="step-number">02 &mdash; Investigate</p>
+          <p class="step-description">Apply research, observation, mathematics, critical thinking and interdisciplinary study.</p>
         </div>
         <div class="step">
-          <span class="step-number">03 &mdash; Share</span>
-          <h3>Share</h3>
-          <p>Communicate findings transparently, acknowledge uncertainty and invite constructive review.</p>
+          <p class="step-number">03 &mdash; Share</p>
+          <p class="step-description">Communicate findings transparently, acknowledge uncertainty and invite constructive review.</p>
         </div>
       </div>
 
@@ -316,7 +332,7 @@
       <h2 class="connect-heading" id="connect-heading">The Universe Invites Us to Wonder&mdash;and to Investigate.</h2>
       <p class="connect-description">Join a thoughtful exploration of space, consciousness and ancient cosmological ideas through curiosity, collaboration and scientific discipline.</p>
       <a class="btn btn-primary" href="mailto:carsoftwaresystems@gmail.com">Connect With Ishavasyam.org</a>
-      <p class="connect-note">Write to us at carsoftwaresystems@gmail.com</p>
+      <p class="connect-note">Write to the Ishavasyam.org team</p>
     </div>
   </section>
 
@@ -334,7 +350,7 @@
         <a href="#vision">Vision</a>
         <a href="#research">Research</a>
         <a href="#approach">Our Approach</a>
-        <a href="mailto:carsoftwaresystems@gmail.com">Contact</a>
+        <a href="#connect">Connect</a>
       </nav>
     </div>
     <div class="footer-bottom">
