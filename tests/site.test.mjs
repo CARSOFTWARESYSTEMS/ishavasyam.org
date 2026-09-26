@@ -158,6 +158,13 @@ test("the phone number and profile appear in one authoritative contact section",
   assert.equal(one(home, "about/sudarshana-karkala").length, 1);
 });
 
+test("structured data carries no personal phone number; the visible contact keeps it", () => {
+  const ld = home.slice(home.indexOf('<script type="application/ld+json">'), home.indexOf("</script>", home.indexOf('<script type="application/ld+json">')));
+  assert.doesNotMatch(ld, /telephone|9845561518|98455/);
+  assert.match(home, /<h2 id="contact-title">Research Contact<\/h2>/);
+  assert.match(home, /href="tel:\+919845561518"/);
+});
+
 test("claim-safety guards on the homepage", () => {
   const text = visibleText(home);
   const banned = [

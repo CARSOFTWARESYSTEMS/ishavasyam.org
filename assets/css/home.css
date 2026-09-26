@@ -57,9 +57,23 @@
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-deva: "Noto Serif Devanagari", "Kohinoor Devanagari", "Devanagari Sangam MN", "Noto Sans Devanagari", "Nirmala UI", "Mangal", serif;
 
+  /* One content axis for every section: 18px at 320, 20px at 360, 22px at 390, 24px at 430, 40px max.
+     With viewport-fit=cover the axis also clears notches / rounded corners in landscape. */
   --container: 1240px;
   --gutter: clamp(18px, 5.6vw, 40px);
+  --gutter-l: max(var(--gutter), env(safe-area-inset-left, 0px));
+  --gutter-r: max(var(--gutter), env(safe-area-inset-right, 0px));
   --header-h: 64px;
+
+  /* vertical rhythm */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.25rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  /* hanging indent shared by every bulleted list: marker on the content axis, text one step in */
+  --list-indent: 1rem;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -114,7 +128,8 @@ cite { font-style: normal; }
   width: 100%;
   max-width: var(--container);
   margin-inline: auto;
-  padding-inline: var(--gutter);
+  padding-left: var(--gutter-l);
+  padding-right: var(--gutter-r);
 }
 
 .visually-hidden {
@@ -240,7 +255,8 @@ cite { font-style: normal; }
   text-decoration: none;
   color: var(--text);
 }
-.brand-mark { width: 26px; height: 26px; color: var(--accent); flex: none; }
+/* the mark's artwork is inset 7/64 inside its viewBox; pull it back so its ink starts on the content axis */
+.brand-mark { width: 26px; height: 26px; margin-left: -3px; color: var(--accent); flex: none; }
 .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
 .brand-name { font: 700 0.95rem/1.1 var(--font-head); letter-spacing: 0.06em; }
 .brand-sub { margin-top: 0.2rem; font: 500 0.66rem/1 var(--font-body); letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-3); }
@@ -318,7 +334,7 @@ cite { font-style: normal; }
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    padding: 0.5rem var(--gutter) 1.5rem;
+    padding: 0.5rem var(--gutter-r) 1.5rem var(--gutter-l);
     background: var(--bg);
     border-bottom: 1px solid var(--line-2);
     opacity: 0;
@@ -491,7 +507,8 @@ cite { font-style: normal; }
   align-items: center;
   gap: 0.15rem;
   margin-top: -0.35rem;
-  padding-inline: var(--gutter);
+  padding-left: var(--gutter-l);
+  padding-right: var(--gutter-r);
   font-size: 0.7rem;
   line-height: 1.4;
   text-align: center;
@@ -505,11 +522,21 @@ cite { font-style: normal; }
   color: var(--text-2);
 }
 
-/* Stacked hero (phones, tablets, and any tall viewport): text → station → disclaimer → CTA */
+/* Stacked hero (phones, tablets, and any tall viewport): text → station → disclaimer → CTA.
+   One centre axis runs through the mantra, identity, mission, station, disclaimer, CTA and support line. */
 @media not all and (min-width: 1024px) and (min-aspect-ratio: 5/4) {
   /* the band's upper edge is dark space blended into the page, so it can tuck under the mission text */
   .hero-head { position: relative; z-index: 3; }
   .hero-visual { margin-top: -1.75rem; }
+
+  .hero-head .container,
+  .hero-foot .container { align-items: center; text-align: center; }
+  .hero-mission { margin-inline: auto; }
+  .hero-support { max-width: 21rem; text-wrap: balance; }
+  .hero-actions { width: 100%; }
+  /* tracked capitals end in letter-spacing; pad the leading side by the same amount so the ink is centred */
+  .hero-org { padding-left: 0.16em; }
+  .hero-caption-label { padding-left: 0.12em; }
 
   @media (max-height: 740px) {
     .hero-visual { max-height: 40svh; }
@@ -518,9 +545,8 @@ cite { font-style: normal; }
 
   @media (min-width: 560px) {
     .hero-actions .btn { width: auto; }
-    .hero-foot .container { gap: 1.1rem; align-items: center; text-align: center; }
-    .hero-head .container { text-align: center; }
-    .hero-mission { margin-inline: auto; }
+    .hero-foot .container { gap: 1.1rem; }
+    .hero-support { max-width: 31rem; }
   }
 
   /* tablets in portrait: keep the CTA within the first screen */
@@ -574,7 +600,7 @@ cite { font-style: normal; }
     align-self: end;
     justify-self: end;
     align-items: flex-end;
-    margin: 0 var(--gutter) 1.5rem 0;
+    margin: 0 var(--gutter-r) 1.5rem 0;
     padding: 0;
     font-size: 0.72rem;
     text-align: right;
@@ -600,13 +626,30 @@ cite { font-style: normal; }
   text-wrap: balance;
 }
 
-.section-head { max-width: 46rem; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
-.section-intro { margin-top: 1.25rem; font-size: 1.06rem; color: var(--text-2); }
+.section-head { max-width: 46rem; margin-bottom: clamp(var(--space-xl), 5vw, 4rem); }
+.section-intro { margin-top: var(--space-lg); font-size: 1.06rem; color: var(--text-2); }
 
 .lead { font-size: clamp(1.08rem, 0.4vw + 1rem, 1.22rem); line-height: 1.55; color: var(--text); }
 .section p { color: var(--text-2); }
 .section p.lead { color: var(--text); }
 .section p strong { color: var(--text); font-weight: 600; }
+
+/* Alignment of running text, identical on phones and desktop:
+   - justified (hyphenated, flush to both edges of the column): the frontier descriptions, the
+     schematic caption and the footer disclaimer — blocks that justify without rivers at every width
+     from 320px up (checked by tools/align-audit.mjs);
+   - left-aligned: leads, section intros, the lab column descriptions, collaboration and contact copy,
+     whose words are too long for the phone measure to justify evenly; headings, labels, list items,
+     timeline captions and controls. */
+.schematic-note,
+.frontier > p:not(.frontier-num):not(.frontier-tag),
+.footer-bottom p:last-child {
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  -webkit-hyphenate-limit-lines: 2;
+  hyphenate-limit-lines: 2;
+}
 
 /* ---------- Mission ---------- */
 .mission { border-top: 1px solid var(--line); }
@@ -621,19 +664,20 @@ cite { font-style: normal; }
 .mission-grid {
   display: grid;
   grid-template-areas: "text" "schem" "facts";
-  gap: 2rem;
-  margin-top: clamp(1.5rem, 3vw, 3rem);
+  gap: var(--space-xl);
+  margin-top: clamp(var(--space-lg), 3vw, 3rem);
 }
 .mission-text { grid-area: text; max-width: 38rem; }
-.mission-text .lead { text-wrap: pretty; }
 .schematic { grid-area: schem; }
 .facts { grid-area: facts; }
 
+/* phones: one clean column (label over value); two columns once there is room */
 .facts {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr);
   column-gap: clamp(1rem, 3vw, 2rem);
 }
+@media (min-width: 560px) { .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .facts > div {
   display: flex;
   flex-direction: column;
@@ -689,7 +733,7 @@ cite { font-style: normal; }
 .schematic-legend {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0 1.25rem;
+  gap: 0 1rem;
   margin-top: 1rem;
 }
 @media (min-width: 360px) { .schematic-legend { grid-template-columns: 1fr 1fr; } }
@@ -697,7 +741,8 @@ cite { font-style: normal; }
 .schematic-legend a {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
+  white-space: nowrap;
   min-height: 44px;
   font-size: 0.88rem;
   color: var(--text-2);
@@ -852,7 +897,7 @@ cite { font-style: normal; }
   transition: transform 0.3s var(--ease);
 }
 .frontier details[open] summary::after { transform: rotate(-135deg) translateY(-2px); }
-.frontier details ul { padding: 0.25rem 0 0.5rem 1.1rem; list-style: none; }
+.frontier details ul { padding: 0.25rem 0 0.5rem var(--list-indent); list-style: none; }
 .frontier details li {
   position: relative;
   padding-block: 0.28rem;
@@ -863,7 +908,7 @@ cite { font-style: normal; }
 .frontier details li::before {
   content: "";
   position: absolute;
-  left: -1.1rem;
+  left: calc(-1 * var(--list-indent));
   top: 0.95em;
   width: 0.45rem;
   height: 1px;
@@ -876,9 +921,8 @@ cite { font-style: normal; }
   background: radial-gradient(70% 60% at 85% 20%, rgba(52, 78, 150, 0.12), rgba(6, 8, 26, 0) 70%), var(--bg);
 }
 .researchers-grid { display: grid; gap: 3rem; }
-.researchers-text h2 { margin-bottom: 1.25rem; }
-.researchers-text .lead { font-size: clamp(1.12rem, 0.6vw + 1rem, 1.35rem); text-wrap: pretty; }
-.researchers-text p:not(.lead):not(.eyebrow) { text-wrap: pretty; }
+.researchers-text h2 { margin-bottom: var(--space-lg); }
+.researchers-text .lead { font-size: clamp(1.12rem, 0.6vw + 1rem, 1.35rem); }
 .researchers-text p + p { margin-top: 1rem; }
 .roles-label {
   margin-bottom: 0.75rem;
@@ -888,10 +932,13 @@ cite { font-style: normal; }
   text-transform: uppercase;
   color: var(--text-3) !important;
 }
-.roles { display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(1rem, 3vw, 1.75rem); }
+.roles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(1rem, 3vw, 1.75rem); }
+/* the narrowest phones: one column rather than wrapping most roles onto two lines */
+@media (max-width: 22.4375em) { .roles { grid-template-columns: minmax(0, 1fr); } }
 .roles li {
   position: relative;
-  padding: 0.85rem 0 0.85rem 0.9rem;
+  padding: 0.85rem 0 0.85rem var(--list-indent);
+  text-wrap: balance;
   border-top: 1px solid var(--line);
   font: 500 clamp(0.92rem, 0.3vw + 0.86rem, 1.06rem)/1.3 var(--font-head);
   color: var(--text);
@@ -935,7 +982,9 @@ cite { font-style: normal; }
 /* ---------- Lab ---------- */
 .lab { border-top: 1px solid var(--line); }
 
-.pipeline { display: grid; counter-reset: step; }
+/* phones: one vertical rail. Every node shares one x (rail centre = axis + 7px), so the node's outer
+   edge sits on the content axis and all stage text starts 2rem in. */
+.pipeline { display: grid; padding-left: 6px; }
 .step {
   position: relative;
   padding: 0 0 1.6rem 1.5rem;
@@ -952,7 +1001,7 @@ cite { font-style: normal; }
   height: 14px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 0 4px var(--bg);
+  box-shadow: 0 0 0 5px var(--bg); /* halo masks the rail: none above node 01, even gaps elsewhere */
 }
 .step--planned::before { background: var(--bg); border: 2px solid var(--planned); }
 .step-num {
@@ -979,14 +1028,14 @@ cite { font-style: normal; }
 .step p { font-size: 0.93rem; }
 
 @media (min-width: 900px) {
-  .pipeline { grid-template-columns: repeat(5, 1fr); gap: 0; }
+  .pipeline { grid-template-columns: repeat(5, 1fr); gap: 0; padding-left: 0; }
   .step { padding: 1.75rem 1.5rem 0 0; border-left: 0; border-top: 2px solid var(--accent); }
   .step--planned { border-left: 0; border-top: 2px dashed rgba(230, 192, 122, 0.55); }
   .step:last-child { border-top-color: rgba(230, 192, 122, 0.55); }
   .step::before { left: 0; top: -8px; }
 }
 
-.lab-split { display: grid; gap: 2.5rem; margin-top: clamp(2.75rem, 6vw, 4.5rem); }
+.lab-split { display: grid; gap: 2.5rem; margin-top: clamp(var(--space-2xl), 6vw, 4.5rem); }
 @media (min-width: 900px) { .lab-split { grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 5vw, 4.5rem); } }
 .lab-col {
   display: flex;
@@ -1012,15 +1061,22 @@ cite { font-style: normal; }
 }
 .collaborate-inner > h2,
 .collaborate-inner > p { max-width: 46rem; }
-.collaborate-inner > p { margin-top: 1.1rem; font-size: 1.05rem; text-wrap: pretty; }
+.collaborate-inner > p { margin-top: var(--space-lg); font-size: 1.05rem; }
+/* primary action (same geometry as the hero CTA), then a quieter secondary resource, then the contact */
 .collaborate-actions {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 0.6rem;
-  margin-top: 1.75rem;
+  gap: var(--space-sm);
+  margin-top: var(--space-xl);
 }
-.collaborate-actions .text-link { align-self: flex-start; }
+.collaborate-actions .text-link {
+  align-self: flex-start;
+  font-size: 0.94rem;
+  color: var(--text-2);
+  text-decoration-color: var(--line-2);
+}
+.collaborate-actions .text-link:hover { color: var(--text); text-decoration-color: currentColor; }
 @media (min-width: 560px) {
   .collaborate-actions { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; }
   .collaborate-actions .btn { min-width: 12rem; }
@@ -1028,13 +1084,14 @@ cite { font-style: normal; }
 
 .contact {
   display: grid;
-  gap: 1.1rem;
-  margin-top: clamp(2.75rem, 6vw, 4.5rem);
+  gap: var(--space-lg);
+  margin-top: clamp(var(--space-2xl), 6vw, 4.5rem);
   padding-top: 1.5rem;
   border-top: 1px solid var(--line-2);
 }
+/* same label treatment as every section eyebrow */
 .section .contact h2 {
-  font: 600 0.74rem/1.3 var(--font-body);
+  font: 600 0.76rem/1.3 var(--font-body);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--accent);
@@ -1045,7 +1102,7 @@ cite { font-style: normal; }
 .contact-links {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: baseline;
   gap: 0 1.75rem;
   margin-top: 0.35rem;
 }
@@ -1068,19 +1125,28 @@ cite { font-style: normal; }
 
 /* ---------- Footer ---------- */
 .site-footer {
-  padding-block: 3.5rem 2rem;
+  padding-top: 3.5rem;
+  padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
   border-top: 1px solid var(--line);
   background: var(--bg-deep);
 }
 .footer-top { display: flex; flex-direction: column; gap: 2rem; }
 .footer-name { font: 700 0.95rem/1.3 var(--font-head); letter-spacing: 0.06em; }
-.footer-name span[aria-hidden] { color: var(--text-3); margin-inline: 0.2rem; }
+.footer-name-sep { color: var(--text-3); margin-inline: 0.2rem; }
+.footer-name-sub { white-space: nowrap; }
+/* the one-line lockup no longer fits: a designed two-line lockup (as in the header), never a stray "STATION" */
+@media (max-width: 22.4375em) {
+  .footer-name-sep { display: none; }
+  .footer-name-sub { display: block; }
+}
 .nowrap { white-space: nowrap; }
 .footer-sub { margin-top: 0.35rem; font-size: 0.84rem; color: var(--text-3); }
 .footer-org { margin-top: 1.25rem; font-size: 0.9rem; line-height: 1.6; color: var(--text-2); }
 .footer-org a { text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 0.25em; }
 .footer-org a:hover { text-decoration-color: currentColor; }
-.footer-nav { display: flex; flex-wrap: wrap; gap: 0 1.75rem; }
+/* phones/tablets: two aligned columns; one column where two no longer fit; a right-aligned row on desktop */
+.footer-nav { display: grid; grid-template-columns: repeat(2, max-content); column-gap: var(--space-xl); }
+@media (max-width: 22.4375em) { .footer-nav { grid-template-columns: minmax(0, 1fr); } }
 .footer-nav a {
   display: inline-flex;
   align-items: center;
@@ -1104,7 +1170,7 @@ cite { font-style: normal; }
 .footer-bottom p:last-child { max-width: 52rem; }
 @media (min-width: 800px) {
   .footer-top { flex-direction: row; justify-content: space-between; align-items: flex-start; }
-  .footer-nav { justify-content: flex-end; }
+  .footer-nav { display: flex; flex-wrap: wrap; gap: 0 1.75rem; justify-content: flex-end; }
 }
 
 /* ---------- Reduced motion ---------- */

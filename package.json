@@ -10,7 +10,8 @@
     "test": "node --test tests/*.test.mjs",
     "render:posters": "node tools/render-posters.mjs",
     "qa:visual": "node tools/visual-qa.mjs",
-    "qa:analytics": "node tools/verify-analytics.mjs"
+    "qa:analytics": "node tools/verify-analytics.mjs",
+    "qa:align": "node tools/align-audit.mjs"
   },
   "devDependencies": {
     "axe-core": "^4.13.0",

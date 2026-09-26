@@ -30,7 +30,8 @@ npm run serve            # http://localhost:4173 (mirrors GitHub Pages routing)
 
 npm test                 # analytics + metadata/structured-data/claim-safety tests
 npm run lint             # html-validate + local link/asset check (add --external via node tools/check-site.mjs --external)
-npm run qa:visual        # screenshots at 12 viewports → qa-output/
+npm run qa:visual        # screenshots at 14 viewports → qa-output/
+npm run qa:align         # phone alignment audit: content/centre axes, justified word gaps, overflow (--shots, --guides)
 npm run qa:analytics     # end-to-end GA4 verification (hits captured locally, never sent)
 node tools/a11y.mjs      # axe-core WCAG audit + keyboard checks
 ```
