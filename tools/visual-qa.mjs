@@ -10,10 +10,12 @@ const args = Object.fromEntries(process.argv.slice(2).map((a) => { const [k, v] 
 const out = args.out || "qa-output";
 mkdirSync(out, { recursive: true });
 const viewports = [
-  [320, 640], [360, 780], [375, 812], [390, 844], [412, 915], [430, 932],
-  [768, 1024], [1024, 768], [1280, 800], [1440, 900], [1920, 1080], [844, 390],
+  [320, 640], [360, 800], [375, 812], [390, 844], [393, 852], [412, 915], [430, 932],
+  [768, 1024], [820, 1180], [1024, 1366],
+  [1280, 800], [1440, 900], [1728, 1117],
+  [844, 390],
 ];
-const only = args.only ? viewports.filter(([w, h]) => `${w}x${h}` === args.only) : viewports;
+const only = args.only ? [args.only.split("x").map(Number)] : viewports;
 const path = args.path || "/";
 
 const server = await startServer(4182);

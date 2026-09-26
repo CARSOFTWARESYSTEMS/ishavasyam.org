@@ -200,3 +200,42 @@ test("the live 3D scene is optional: reduced motion, Save-Data and weak GPUs kee
   assert.match(home, /<h1 class="hero-title"/);
   assert.match(home, /<p class="hero-mission">Develop the capability/);
 });
+
+test("frontiers are six accessible disclosures, collapsed by default, each tagged for analytics", () => {
+  const details = [...home.matchAll(/<details([^>]*)>\s*<summary>([^<]*)<\/summary>/g)];
+  assert.equal(details.length, 6);
+  for (const [, attrs, label] of details) {
+    assert.doesNotMatch(attrs, /\bopen\b/, "collapsed by default");
+    assert.match(attrs, /data-frontier="[a-z_]+"/);
+    assert.equal(label, "Explore research scope");
+  }
+  // the detailed research scope is preserved (not deleted) — 38 scope items in total
+  const scope = home.slice(home.indexOf('<ol class="frontier-list">'), home.indexOf("</ol>", home.indexOf('<ol class="frontier-list">')));
+  assert.equal((scope.match(/<li>/g) || []).length, 38);
+});
+
+test("research problem shows four compact facts after the schematic", () => {
+  const facts = home.slice(home.indexOf('<dl class="facts">'), home.indexOf("</dl>"));
+  const dts = [...facts.matchAll(/<dt>([^<]+)<\/dt>/g)].map((m) => m[1]);
+  assert.deepEqual(dts, ["Mission", "Current work", "Research lab", "Organisation"]);
+  assert.ok(home.indexOf('<figure class="schematic"') < home.indexOf('<dl class="facts">'));
+  assert.match(facts, /Planned/);
+});
+
+test("lab progression is numbered and keeps current vs planned states", () => {
+  const steps = [...home.matchAll(/<li class="step step--(current|planned)">\s*<h3><span class="step-num">(\d\d)<\/span> (\w+)<\/h3>/g)].map((m) => [m[2], m[3], m[1]]);
+  assert.deepEqual(steps, [
+    ["01", "Model", "current"], ["02", "Simulate", "current"], ["03", "Experiment", "planned"], ["04", "Validate", "planned"], ["05", "Integrate", "planned"],
+  ]);
+});
+
+test("desktop and stacked hero compositions use the same media condition in HTML, CSS and JS", () => {
+  const WIDE = "(min-width: 1024px) and (min-aspect-ratio: 5/4)";
+  const css = read("assets/css/home.css");
+  const js = read("assets/js/home.js");
+  assert.ok(home.includes(`media="${WIDE}"`));
+  assert.ok(home.includes(`media="not all and ${WIDE}"`));
+  assert.ok(css.includes(`@media ${WIDE}`));
+  assert.ok(css.includes(`@media not all and ${WIDE}`));
+  assert.ok(js.includes(`matchMedia("${WIDE}")`));
+});

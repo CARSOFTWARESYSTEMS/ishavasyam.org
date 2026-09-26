@@ -52,8 +52,8 @@
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 
 <!-- The hero poster is the LCP element; fetch only the variant this viewport will use. -->
-<link rel="preload" as="image" type="image/avif" fetchpriority="high" media="(min-width: 1024px)" href="/images/station/hero-wide-1920.avif" imagesrcset="/images/station/hero-wide-1280.avif 1280w, /images/station/hero-wide-1920.avif 1920w, /images/station/hero-wide-2400.avif 2400w" imagesizes="100vw">
-<link rel="preload" as="image" type="image/avif" fetchpriority="high" media="(max-width: 1023.98px)" href="/images/station/hero-band-960.avif" imagesrcset="/images/station/hero-band-640.avif 640w, /images/station/hero-band-960.avif 960w, /images/station/hero-band-1200.avif 1200w" imagesizes="100vw">
+<link rel="preload" as="image" type="image/avif" fetchpriority="high" media="(min-width: 1024px) and (min-aspect-ratio: 5/4)" href="/images/station/hero-wide-1920.avif" imagesrcset="/images/station/hero-wide-1280.avif 1280w, /images/station/hero-wide-1920.avif 1920w, /images/station/hero-wide-2400.avif 2400w" imagesizes="100vw">
+<link rel="preload" as="image" type="image/avif" fetchpriority="high" media="not all and (min-width: 1024px) and (min-aspect-ratio: 5/4)" href="/images/station/hero-band-960.avif" imagesrcset="/images/station/hero-band-640.avif 640w, /images/station/hero-band-960.avif 960w, /images/station/hero-band-1200.avif 1200w" imagesizes="100vw">
 <link rel="stylesheet" href="/assets/css/home.css">
 
 <script type="application/ld+json">
@@ -137,7 +137,7 @@
       "url": "https://ishavasyam.org/images/station/hero-wide-1920.webp",
       "contentUrl": "https://ishavasyam.org/images/station/hero-wide-1920.webp",
       "width": 1920,
-      "height": 1080,
+      "height": 1280,
       "caption": "Conceptual space station in low Earth orbit — an illustrative rendering of an original architecture, not an engineered design."
     }
   ]
@@ -185,8 +185,9 @@
         <p><span>ईशावास्यमिदं सर्वं यत्किञ्च जगत्यां जगत्।</span> <span>तेन त्यक्तेन भुञ्जीथा मा गृधः कस्यस्विद्धनम्॥</span></p>
       </blockquote>
       <figcaption class="mantra-meta">
-        <cite>&mdash; Isha Upanishad, Mantra 1</cite>
-        <a class="mantra-link" href="/philosophy" data-cta="explore_ishavasyam_philosophy" data-cta-location="mantra" data-link-type="internal">Meaning &amp; Philosophy <span aria-hidden="true">&rarr;</span></a>
+        <cite>Isha Upanishad &middot; Mantra 1</cite>
+        <span class="mantra-dash" aria-hidden="true">&mdash;</span>
+        <a class="mantra-link" href="/philosophy" data-cta="explore_ishavasyam_philosophy" data-cta-location="mantra" data-link-type="internal">Meaning<span class="mantra-link-more"> &amp; Philosophy</span> <span aria-hidden="true">&rarr;</span></a>
       </figcaption>
     </figure>
   </div>
@@ -208,15 +209,15 @@
 
     <div class="hero-visual" id="hero-visual">
       <picture class="hero-poster">
-        <source type="image/avif" media="(min-width: 1024px)" srcset="/images/station/hero-wide-1280.avif 1280w, /images/station/hero-wide-1920.avif 1920w, /images/station/hero-wide-2400.avif 2400w" sizes="100vw">
-        <source type="image/webp" media="(min-width: 1024px)" srcset="/images/station/hero-wide-1280.webp 1280w, /images/station/hero-wide-1920.webp 1920w, /images/station/hero-wide-2400.webp 2400w" sizes="100vw">
+        <source type="image/avif" media="(min-width: 1024px) and (min-aspect-ratio: 5/4)" srcset="/images/station/hero-wide-1280.avif 1280w, /images/station/hero-wide-1920.avif 1920w, /images/station/hero-wide-2400.avif 2400w" sizes="100vw">
+        <source type="image/webp" media="(min-width: 1024px) and (min-aspect-ratio: 5/4)" srcset="/images/station/hero-wide-1280.webp 1280w, /images/station/hero-wide-1920.webp 1920w, /images/station/hero-wide-2400.webp 2400w" sizes="100vw">
         <source type="image/avif" srcset="/images/station/hero-band-640.avif 640w, /images/station/hero-band-960.avif 960w, /images/station/hero-band-1200.avif 1200w" sizes="100vw">
         <source type="image/webp" srcset="/images/station/hero-band-640.webp 640w, /images/station/hero-band-960.webp 960w, /images/station/hero-band-1200.webp 1200w" sizes="100vw">
         <img src="/images/station/hero-band-960.webp" width="1200" height="900" fetchpriority="high" decoding="async"
           alt="Illustrative rendering of an original conceptual space station in low Earth orbit: a triangular truss carries roll-out solar array wings, thermal radiators, external payload platforms, a communications antenna and a robotic arm above a stack of pressurised modules with docking ports, seen above Earth's blue atmospheric limb.">
       </picture>
-      <p class="hero-caption"><span class="hero-caption-label">Conceptual Space Station</span> <span class="hero-caption-note">Illustrative rendering &mdash; not an engineered or built design</span></p>
     </div>
+    <p class="hero-caption"><span class="hero-caption-label">Conceptual Space Station</span> <span class="hero-caption-note">Illustrative rendering &mdash; not an engineered or built design</span></p>
 
     <div class="hero-block hero-foot">
       <div class="container">
@@ -236,16 +237,7 @@
 
       <div class="mission-grid">
         <div class="mission-text">
-          <p class="lead">A space station is not a single spacecraft subsystem. It is an integrated, long-duration orbital infrastructure where architecture, energy, life support, autonomy, avionics, robotics, operations and human safety must function as one system.</p>
-          <p><strong>ISHAVASYAM.ORG is a Space Station research and engineering initiative.</strong> It studies that integration problem end to end &mdash; from architecture and subsystem physics, through modelling and simulation, toward experimental validation.</p>
-
-          <dl class="facts">
-            <div><dt>Mission</dt><dd>Develop the capability to research, design and engineer a complete space station from first principles</dd></div>
-            <div><dt>Research frontiers</dt><dd>Station architecture &middot; autonomous systems &amp; station health &middot; power &amp; energy &middot; life support &middot; avionics &amp; communications &middot; robotics &amp; operations</dd></div>
-            <div><dt>Current work</dt><dd>Digital research: architecture studies, subsystem models and simulation</dd></div>
-            <div><dt>Research lab</dt><dd><span class="status status--planned">Planned</span> Not yet operational</dd></div>
-            <div><dt>Organisation</dt><dd>An initiative of iTelematics Software Private Limited, Bangalore, India</dd></div>
-          </dl>
+          <p class="lead"><strong>ISHAVASYAM.ORG is a Space Station research and engineering initiative.</strong> A space station is not a single spacecraft subsystem: it is integrated, long-duration orbital infrastructure where architecture, energy, life support, autonomy, avionics, robotics, operations and human safety must function as one system.</p>
         </div>
 
         <figure class="schematic" id="schematic">
@@ -266,16 +258,23 @@
           </div>
           <figcaption>
             <ol class="schematic-legend">
-              <li><a href="#frontier-architecture" data-sys="arch" data-frontier="station_architecture"><span class="legend-num">1</span>Station architecture</a></li>
-              <li><a href="#frontier-station-health" data-sys="health" data-frontier="autonomous_systems_station_health"><span class="legend-num">2</span>Autonomous systems &amp; station health</a></li>
+              <li><a href="#frontier-architecture" data-sys="arch" data-frontier="station_architecture"><span class="legend-num">1</span>Architecture</a></li>
+              <li><a href="#frontier-station-health" data-sys="health" data-frontier="autonomous_systems_station_health"><span class="legend-num">2</span>Station health</a></li>
               <li><a href="#frontier-power" data-sys="power" data-frontier="power_energy"><span class="legend-num">3</span>Power &amp; energy</a></li>
               <li><a href="#frontier-life-support" data-sys="life" data-frontier="life_support"><span class="legend-num">4</span>Life support</a></li>
-              <li><a href="#frontier-avionics" data-sys="avio" data-frontier="avionics_communications"><span class="legend-num">5</span>Avionics &amp; communications</a></li>
-              <li><a href="#frontier-robotics" data-sys="robo" data-frontier="robotics_operations"><span class="legend-num">6</span>Robotics &amp; operations</a></li>
+              <li><a href="#frontier-avionics" data-sys="avio" data-frontier="avionics_communications"><span class="legend-num">5</span>Avionics &amp; comms</a></li>
+              <li><a href="#frontier-robotics" data-sys="robo" data-frontier="robotics_operations"><span class="legend-num">6</span>Robotics &amp; ops</a></li>
             </ol>
-            <p class="schematic-note">Plan view of the conceptual station shown above. An original, illustrative architecture &mdash; not an engineered design.</p>
+            <p class="schematic-note">Plan view of the conceptual station shown above &mdash; an original, illustrative architecture, not an engineered design.</p>
           </figcaption>
         </figure>
+
+        <dl class="facts">
+          <div><dt>Mission</dt><dd>First-principles Space Station R&amp;D</dd></div>
+          <div><dt>Current work</dt><dd>Digital research &amp; simulation</dd></div>
+          <div><dt>Research lab</dt><dd><span class="status status--planned">Planned</span> <span class="facts-note">Not yet operational</span></dd></div>
+          <div><dt>Organisation</dt><dd>iTelematics Software Private Limited</dd></div>
+        </dl>
       </div>
     </div>
   </section>
@@ -296,7 +295,7 @@
           <h3>Station Architecture</h3>
           <p>Configuration, structures and interfaces for a modular station that must be assembled, expanded and maintained in orbit over decades.</p>
           <details data-frontier="station_architecture">
-            <summary>Research scope</summary>
+            <summary>Explore research scope</summary>
             <ul>
               <li>Configuration and mass-properties trades</li>
               <li>Modular growth and interface standards</li>
@@ -315,7 +314,7 @@
           <p class="frontier-tag">Current research emphasis</p>
           <p>Telemetry-driven health management that detects, isolates and responds to faults &mdash; keeping people in supervision while reducing dependence on continuous ground contact.</p>
           <details data-frontier="autonomous_systems_station_health">
-            <summary>Research scope</summary>
+            <summary>Explore research scope</summary>
             <ul>
               <li>Telemetry intelligence and subsystem health monitoring</li>
               <li>Anomaly detection and fault isolation</li>
@@ -335,7 +334,7 @@
           <h3>Power &amp; Energy</h3>
           <p>Generation, storage, distribution and heat rejection across orbital day and eclipse, with fault tolerance designed into every channel.</p>
           <details data-frontier="power_energy">
-            <summary>Research scope</summary>
+            <summary>Explore research scope</summary>
             <ul>
               <li>Photovoltaic array sizing and Sun tracking</li>
               <li>Energy storage through eclipse</li>
@@ -353,7 +352,7 @@
           <h3>Life Support</h3>
           <p>Environmental control and life support for sustained human presence: atmosphere, water, temperature and humidity, and the loops that close them.</p>
           <details data-frontier="life_support">
-            <summary>Research scope</summary>
+            <summary>Explore research scope</summary>
             <ul>
               <li>Atmosphere revitalisation: oxygen generation, CO<sub>2</sub> removal, trace contaminants</li>
               <li>Water recovery and management</li>
@@ -371,7 +370,7 @@
           <h3>Avionics &amp; Communications</h3>
           <p>Command and data handling, guidance, navigation and control, and space&ndash;ground links that stay dependable under faults, radiation and latency.</p>
           <details data-frontier="avionics_communications">
-            <summary>Research scope</summary>
+            <summary>Explore research scope</summary>
             <ul>
               <li>Fault-tolerant command and data handling</li>
               <li>Onboard data bus and network architecture</li>
@@ -389,7 +388,7 @@
           <h3>Robotics &amp; Operations</h3>
           <p>Robotic assembly, inspection and servicing, and the operations concepts that coordinate crew, ground and autonomous systems.</p>
           <details data-frontier="robotics_operations">
-            <summary>Research scope</summary>
+            <summary>Explore research scope</summary>
             <ul>
               <li>Robotic manipulation for assembly and maintenance</li>
               <li>External inspection and servicing</li>
@@ -411,7 +410,7 @@
         <p class="eyebrow">Depth of collaboration</p>
         <h2 id="researchers-title">Research at the Highest Level</h2>
         <p class="lead">Complex human-spaceflight infrastructure requires multidisciplinary research extending beyond individual subsystems.</p>
-        <p>ISHAVASYAM.ORG seeks to create an environment where advanced researchers and senior technology leaders can investigate the architecture, integration and experimental validation of future space-station systems.</p>
+        <p>ISHAVASYAM.ORG brings advanced researchers and senior technology leaders together to investigate the architecture, integration and experimental validation of future space-station systems.</p>
       </div>
       <div class="researchers-roles">
         <p class="roles-label" id="roles-label">Intended research community</p>
@@ -440,28 +439,28 @@
 
       <ol class="pipeline">
         <li class="step step--current">
+          <h3><span class="step-num">01</span> Model</h3>
           <span class="step-state">Current &middot; digital</span>
-          <h3>Model</h3>
           <p>Architecture and subsystem models from first principles</p>
         </li>
         <li class="step step--current">
+          <h3><span class="step-num">02</span> Simulate</h3>
           <span class="step-state">Current &middot; digital</span>
-          <h3>Simulate</h3>
           <p>Mission, environment and fault simulation; digital-twin concepts</p>
         </li>
         <li class="step step--planned">
+          <h3><span class="step-num">03</span> Experiment</h3>
           <span class="step-state">Planned</span>
-          <h3>Experiment</h3>
           <p>Subsystem experiments and hardware-in-the-loop testing</p>
         </li>
         <li class="step step--planned">
+          <h3><span class="step-num">04</span> Validate</h3>
           <span class="step-state">Planned</span>
-          <h3>Validate</h3>
           <p>Verification of models against measured behaviour</p>
         </li>
         <li class="step step--planned">
+          <h3><span class="step-num">05</span> Integrate</h3>
           <span class="step-state">Planned</span>
-          <h3>Integrate</h3>
           <p>Integrated subsystem and system-level testing</p>
         </li>
       </ol>
@@ -497,33 +496,32 @@
     </div>
   </section>
 
-  <!-- ================= COLLABORATION ================= -->
+  <!-- ================= COLLABORATION + RESEARCH CONTACT ================= -->
   <section class="section collaborate" id="collaborate" aria-labelledby="collaborate-title">
-    <div class="container collaborate-inner">
-      <h2 id="collaborate-title">Collaborate on Space Station Research</h2>
-      <p>ISHAVASYAM.ORG welcomes research dialogue with PhD and postdoctoral researchers, space scientists, senior engineers, chief architects, CTOs, research institutions and space-industry experts working on the architecture, integration and validation of long-duration orbital infrastructure.</p>
-      <div class="collaborate-actions">
-        <a class="btn btn-outline" href="#contact" data-cta="collaborate_space_station_research" data-cta-location="collaboration" data-link-type="internal">Collaborate on Space Station Research <span class="btn-arrow" aria-hidden="true">&rarr;</span></a>
-        <a class="text-link" href="https://aerospace.ishavasyam.org/space" data-cta="explore_space_research" data-cta-location="collaboration" data-link-type="external_research_platform">Explore the broader Space Research ecosystem <span aria-hidden="true">&rarr;</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= CONTACT ================= -->
-  <section class="section contact" id="contact" aria-labelledby="contact-title">
     <div class="container">
-      <div class="contact-card">
+      <div class="collaborate-inner">
+        <h2 id="collaborate-title">Collaborate on Space Station Research</h2>
+        <p>ISHAVASYAM.ORG welcomes research dialogue with PhD and postdoctoral researchers, space scientists, senior engineers, chief architects, CTOs, research institutions and space-industry experts working on the architecture, integration and validation of long-duration orbital infrastructure.</p>
+        <div class="collaborate-actions">
+          <a class="btn btn-primary" href="#contact" data-cta="collaborate_space_station_research" data-cta-location="collaboration" data-link-type="internal">Collaborate <span class="btn-arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="text-link" href="https://aerospace.ishavasyam.org/space" data-cta="explore_space_research" data-cta-location="collaboration" data-link-type="external_research_platform">Explore the broader Space Research ecosystem <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+
+      <section class="contact" id="contact" aria-labelledby="contact-title">
         <div class="contact-intro">
-          <h2 id="contact-title">Contact Us</h2>
-          <p>For Space Station research, technical collaboration and related enquiries:</p>
+          <h2 id="contact-title">Research contact</h2>
+          <p>For Space Station research, technical collaboration and related enquiries.</p>
         </div>
         <address class="contact-person">
           <p class="contact-name">Sudarshana Karkala</p>
           <p class="contact-role">EV.ENGINEER&trade;</p>
-          <p class="contact-line"><a class="contact-phone" href="tel:+919845561518" aria-label="Call Sudarshana Karkala on +91 9845561518" data-cta="contact_sudarshana_phone" data-cta-location="contact" data-link-type="phone" data-contact-method="phone" data-cta-text="Phone">+91&nbsp;9845561518</a></p>
-          <p class="contact-line"><a class="text-link" href="https://aerospace.ishavasyam.org/about/sudarshana-karkala" data-cta="view_sudarshana_profile" data-cta-location="contact" data-link-type="external_profile" data-cta-text="View Profile">View Profile<span class="visually-hidden"> of Sudarshana Karkala</span> <span aria-hidden="true">&rarr;</span></a></p>
+          <p class="contact-links">
+            <a class="contact-phone" href="tel:+919845561518" aria-label="Call Sudarshana Karkala on +91 9845561518" data-cta="contact_sudarshana_phone" data-cta-location="contact" data-link-type="phone" data-contact-method="phone" data-cta-text="Phone">+91&nbsp;9845561518</a>
+            <a class="text-link" href="https://aerospace.ishavasyam.org/about/sudarshana-karkala" data-cta="view_sudarshana_profile" data-cta-location="contact" data-link-type="external_profile" data-cta-text="View Profile">View Profile<span class="visually-hidden"> of Sudarshana Karkala</span> <span aria-hidden="true">&rarr;</span></a>
+          </p>
         </address>
-      </div>
+      </section>
     </div>
   </section>
 
@@ -533,9 +531,9 @@
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <p class="footer-name">ISHAVASYAM.ORG <span aria-hidden="true">|</span> SPACE STATION</p>
+        <p class="footer-name">ISHAVASYAM.ORG <span aria-hidden="true">|</span> <span class="nowrap">SPACE STATION</span></p>
         <p class="footer-sub">Research &middot; Engineering &middot; Experimentation</p>
-        <p class="footer-org">An initiative of <a href="https://itelematics.com/">iTelematics Software Private Limited</a><br>Bangalore, India</p>
+        <p class="footer-org">An initiative of<br><a href="https://itelematics.com/">iTelematics Software Private Limited</a><br>Bangalore, India</p>
       </div>
       <nav class="footer-nav" aria-label="Footer">
         <a href="https://aerospace.ishavasyam.org/space/space-station" data-cta="explore_space_station_research" data-cta-location="footer" data-link-type="external_research_platform">Space Station Research</a>

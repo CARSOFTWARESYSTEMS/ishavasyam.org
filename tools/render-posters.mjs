@@ -11,7 +11,7 @@ const outDir = args.out || "images/station";
 mkdirSync(outDir, { recursive: true });
 
 const jobs = [
-  { name: "hero-wide", comp: "wide", w: 1600, h: 900, dpr: 1.5, sizes: [1280, 1920, 2400] },
+  { name: "hero-wide", comp: "wide", w: 1600, h: 1067, dpr: 1.5, sizes: [1280, 1920, 2400] },
   { name: "hero-band", comp: "band", w: 1200, h: 900, dpr: 1, sizes: [640, 960, 1200] },
 ].filter((j) => !args.only || j.comp === args.only);
 

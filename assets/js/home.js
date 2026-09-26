@@ -8,7 +8,7 @@
 
 const hero = document.getElementById("hero-visual");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-const wideQuery = window.matchMedia("(min-width: 1024px)");
+const wideQuery = window.matchMedia("(min-width: 1024px) and (min-aspect-ratio: 5/4)");
 
 function analytics() {
   return window.IshavasyamAnalytics;

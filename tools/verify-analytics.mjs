@@ -104,7 +104,9 @@ try {
   await page.click('a[data-cta="collaborate_space_station_research"]');
   await page.evaluate(() => window.addEventListener("click", (e) => e.target.closest('a[href^="tel:"]') && e.preventDefault()));
   await page.click('a[data-cta="contact_sudarshana_phone"]');
-  await page.click('.frontier details[data-frontier="power_energy"] summary');
+  // open → close → open the same disclosure: must still be a single research_frontier_select
+  for (let i = 0; i < 3; i++) await page.click('.frontier details[data-frontier="power_energy"] summary');
+  await page.click('.frontier details[data-frontier="life_support"] summary');
   await flush();
   const collab = ctas("collaborate_space_station_research");
   ok(collab.length === 1, `collaboration CTA → one cta_click (got ${collab.length})`);
@@ -112,7 +114,10 @@ try {
   const phone = ctas("contact_sudarshana_phone");
   ok(phone.length === 1, `phone CTA → one cta_click (got ${phone.length})`);
   ok(phone[0] && phone[0]["ep.contact_method"] === "phone" && phone[0]["ep.link_type"] === "phone" && phone[0]["ep.cta_location"] === "contact", "phone params: contact_method=phone, link_type=phone, location=contact");
-  ok(events("research_frontier_select").length === 1, "frontier scope expand → one research_frontier_select");
+  const rfs = events("research_frontier_select");
+  ok(rfs.filter((e) => e["ep.frontier_id"] === "power_energy").length === 1, "toggling a frontier 3× → one research_frontier_select (no duplicates)");
+  ok(rfs.filter((e) => e["ep.frontier_id"] === "life_support").length === 1, "a second frontier → its own research_frontier_select");
+  ok(rfs.every((e) => e["ep.interaction"] === "scope_expand"), "interaction = scope_expand");
 
   // 3. External research CTAs (navigate to stubs, come back)
   for (const [selector, name, dest] of [

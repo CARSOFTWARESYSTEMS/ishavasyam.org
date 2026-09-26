@@ -27,7 +27,9 @@ const DEG = Math.PI / 180;
 /** Framings. `aspect`/`vfov` define a reference frame that is "cover"-fitted
  *  to the container, exactly like the poster's CSS object-fit: cover. */
 export const COMPOSITIONS = {
-  wide: { aspect: 16 / 9, vfov: 31, shift: [0.32, 0.05], dist: 162, az: 48, el: 13.5, roll: -4.5 },
+  // 3:2 reference with the same horizontal field of view as a 16:9 / 31° frame, so every
+  // landscape desktop from 3:2 to ultrawide keeps the station at the same share of the width.
+  wide: { aspect: 3 / 2, vfov: 36.39, shift: [0.345, 0.045], dist: 156, az: 48, el: 13.5, roll: -4.5 },
   band: { aspect: 4 / 3, vfov: 37, shift: [-0.03, 0.08], dist: 131, az: 48, el: 14, roll: -3.5 },
   og: { aspect: 1200 / 630, vfov: 30, shift: [0.27, 0.06], dist: 152, az: 48, el: 13.5, roll: -4.5 },
 };
