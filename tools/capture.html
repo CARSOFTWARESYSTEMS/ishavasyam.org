@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<!-- Dev-only: renders a deterministic still of the station scene for posters/OG. -->
+<html lang="en"><head><meta charset="utf-8"><title>capture</title>
+<style>html,body{margin:0;background:#03040c}#stage{position:fixed;inset:0}</style></head>
+<body><div id="stage"></div>
+<script type="module">
+  const q = new URLSearchParams(location.search);
+  const { mountStation } = await import("/assets/js/station.min.js");
+  mountStation(document.getElementById("stage"), {
+    staticFrame: true,
+    composition: q.get("comp") || "wide",
+    pixelRatio: Number(q.get("dpr") || 1),
+    time: Number(q.get("t") || 0),
+    tier: "high",
+    onFirstFrame: () => { document.body.dataset.ready = "1"; },
+  });
+</script></body></html>

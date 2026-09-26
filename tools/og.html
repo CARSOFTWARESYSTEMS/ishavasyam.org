@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!-- Dev-only: composes the 1200×630 social preview from the live scene. -->
+<html lang="en"><head><meta charset="utf-8"><title>og</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;background:#03040c}
+  #stage{position:fixed;inset:0}
+  .scrim{position:fixed;inset:0;background:linear-gradient(90deg,rgba(6,8,26,.92) 0%,rgba(6,8,26,.7) 30%,rgba(6,8,26,0) 55%)}
+  .copy{position:fixed;left:72px;top:50%;transform:translateY(-54%);color:#eef1f8}
+  .org{font:600 22px/1 Manrope,sans-serif;letter-spacing:.16em;color:#b6bcd1}
+  .main{margin-top:14px;font:700 76px/.95 Manrope,sans-serif;text-transform:uppercase;letter-spacing:-.01em}
+  .sub{margin-top:22px;font:500 22px/1 Inter,sans-serif;letter-spacing:.06em;color:#a4c4ff}
+  .cap{position:fixed;right:40px;bottom:30px;font:500 14px/1 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8e95ae}
+</style></head>
+<body><div id="stage"></div><div class="scrim"></div>
+<div class="copy"><div class="org">ISHAVASYAM.ORG</div><div class="main">Space<br>Station</div><div class="sub">Research · Engineering · Experimentation</div></div>
+<div class="cap">Conceptual space station</div>
+<script type="module">
+  const { mountStation } = await import("/assets/js/station.min.js");
+  await document.fonts.ready;
+  mountStation(document.getElementById("stage"), { staticFrame: true, composition: "og", pixelRatio: 1, tier: "high",
+    onFirstFrame: () => { document.body.dataset.ready = "1"; } });
+</script></body></html>

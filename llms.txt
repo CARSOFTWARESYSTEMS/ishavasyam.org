@@ -1,35 +1,36 @@
-# Ishavasyam.org
+# ISHAVASYAM.ORG | SPACE STATION
 
-> Ishavasyam.org is an independent space-research and educational initiative exploring space science, astronomy, Indic cosmology and consciousness through respectful scholarship and evidence-based scientific inquiry.
+> ISHAVASYAM.ORG is a Space Station research and engineering initiative. Its mission is to develop the capability to research, design and engineer a complete space station from first principles — advancing the systems, technologies and experimental research required for future human space infrastructure.
 
-## Meaning of Ishavasyam
+Research · Engineering · Experimentation
 
-"Ishavasyam" is derived from the opening teaching of the Isha Upanishad and may be understood as "all existence is pervaded or enveloped by the Divine." For Ishavasyam.org, this principle inspires a humble, responsible and evidence-based exploration of the universe.
+## Key facts
 
-## Primary Research Areas
+- What it is: a Space Station research and engineering initiative (a research platform, not an incorporated space company).
+- Mission: develop the capability to research, design and engineer a complete space station from first principles.
+- Research frontiers: station architecture; autonomous systems and station health; power and energy; life support; avionics and communications; robotics and operations.
+- Current research emphasis: autonomous systems and station health (telemetry intelligence, anomaly detection, fault isolation, degradation prediction, safe-mode management and supervised autonomous recovery).
+- Current work: digital research — architecture studies, subsystem models and simulation.
+- Research lab: an ISHAVASYAM.ORG Space Station Research Lab is planned. It does not yet exist and is not operational.
+- Intended collaborators: PhD and postdoctoral researchers, space scientists, senior engineers, principal engineers, chief architects, CTOs, research institutions and space-industry experts.
+- Organisational context: an initiative of iTelematics Software Private Limited, Bangalore, India.
+- The station shown on the website is an original conceptual architecture for illustration. It is not an engineered, approved or built design.
+- ISHAVASYAM.ORG does not claim affiliation with, or endorsement by, any government space agency or space programme.
 
-- Space science and astronomy
-- Planetary and cosmological studies
-- Indic cosmology and ancient knowledge systems
-- Consciousness and fundamental questions
-- Science education and interdisciplinary collaboration
+## Research platforms
 
-## Scientific Integrity
+- Space Station Research platform (flagship): https://aerospace.ishavasyam.org/space/space-station
+- Broader Space Research ecosystem: https://aerospace.ishavasyam.org/space
 
-Ishavasyam.org distinguishes spiritual and philosophical interpretations from experimentally validated scientific knowledge. Ancient wisdom may inspire questions, while scientific claims require observation, evidence, testing and transparent review.
+## Pages
 
-## Affiliation
+- Home — Space Station research and engineering: https://ishavasyam.org/
+- Philosophy — the meaning of Ishavasyam and the Isha Upanishad, the philosophical origin of the name: https://ishavasyam.org/philosophy
 
-Ishavasyam.org is an independent research and educational initiative. It is not affiliated with ISRO, NASA, IN-SPACe, any university, government agency or religious institution.
+## About the name
 
-## Official Website
-
-- https://ishavasyam.org/
-
-## Primary Image
-
-- https://ishavasyam.org/images/ishavasyam-space-research-hero-wallpaper-v1.png
+"Ishavasyam" comes from the first mantra of the Isha Upanishad and may be understood as "all existence is pervaded by the Divine." The name has a philosophical foundation; the engineering programme itself is evidence-driven scientific research. Philosophical interpretations are kept distinct from scientific claims.
 
 ## Contact
 
-- Email: carsoftwaresystems@gmail.com
+- Research enquiries: https://ishavasyam.org/#contact

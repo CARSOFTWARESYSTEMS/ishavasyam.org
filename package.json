@@ -1,0 +1,22 @@
+{
+  "name": "ishavasyam-org",
+  "private": true,
+  "description": "ISHAVASYAM.ORG | SPACE STATION — static site (GitHub Pages). Tooling here is development-only; the site itself has no runtime build step.",
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build-station.mjs",
+    "serve": "node tools/serve.mjs",
+    "lint": "html-validate index.html philosophy.html && node tools/check-site.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "render:posters": "node tools/render-posters.mjs",
+    "qa:visual": "node tools/visual-qa.mjs",
+    "qa:analytics": "node tools/verify-analytics.mjs"
+  },
+  "devDependencies": {
+    "axe-core": "^4.13.0",
+    "esbuild": "^0.25.0",
+    "html-validate": "^9.0.0",
+    "playwright": "^1.50.0",
+    "three": "0.186.1"
+  }
+}

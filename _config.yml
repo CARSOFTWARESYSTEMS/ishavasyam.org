@@ -1,0 +1,11 @@
+# GitHub Pages (Jekyll) — publish only the static site, never the dev tooling.
+exclude:
+  - node_modules
+  - package.json
+  - package-lock.json
+  - src
+  - tools
+  - tests
+  - qa-output
+  - README.md
+  - .htmlvalidate.json

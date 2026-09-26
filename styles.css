@@ -1016,3 +1016,16 @@ section {
     scroll-behavior: auto !important;
   }
 }
+
+/* ---------- Philosophy → Engineering bridge (added with the /philosophy move) ---------- */
+.section-bridge {
+  background: var(--background-primary);
+  border-top: 1px solid rgba(215, 181, 103, 0.14);
+}
+
+.section-bridge .bridge-link {
+  margin-top: 2rem;
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+}
