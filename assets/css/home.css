@@ -137,16 +137,19 @@ cite { font-style: normal; }
   padding-right: var(--site-gutter-r);
 }
 /* Header: brand on the left content edge, navigation centred on the site axis, action on the
-   right content edge. The side tracks never shrink below their content, so nothing overlaps. */
-@media (min-width: 900px) {
+   right content edge. Both pages switch between the collapsed menu and this layout at 1024px —
+   the same breakpoint as the Space Station desktop hero, and the narrowest width at which the
+   six-item Space Station navigation still fits centred beside its logo. */
+@media (min-width: 1024px) {
   .site-header .container.header-shell {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     column-gap: 1.5rem;
   }
-  .site-header .header-shell > :first-child { justify-self: start; }
-  .site-header .header-shell > :last-child { justify-self: end; }
+  .site-header .header-shell > :first-child { grid-column: 1; justify-self: start; }
+  .site-header .header-shell > .primary-nav { grid-column: 2; }
+  .site-header .header-shell > :last-child { grid-column: 3; justify-self: end; }
 }
 /* ==== end site shell ============================================================== */
 
@@ -340,10 +343,10 @@ cite { font-style: normal; }
 
 @media (max-width: 1099px) {
   .header-actions .btn { display: none; }
-  .primary-nav { gap: 1.5rem; }
+  .primary-nav { gap: 1.4rem; }
 }
 
-@media (max-width: 899px) {
+@media (max-width: 1023px) {
   .primary-nav {
     position: fixed;
     top: var(--site-header-h);
@@ -653,15 +656,14 @@ cite { font-style: normal; }
 .section p strong { color: var(--text); font-weight: 600; }
 
 /* Alignment of running text, identical on phones and desktop:
-   - justified (hyphenated, flush to both edges of the column): the frontier descriptions, the
-     schematic caption and the footer disclaimer — blocks that justify without rivers at every width
-     from 320px up (checked by tools/align-audit.mjs);
+   - justified (hyphenated, flush to both edges of the column): the frontier descriptions and the
+     schematic caption — blocks that justify without rivers at every width from 320px up (checked
+     by tools/align-audit.mjs);
    - left-aligned: leads, section intros, the lab column descriptions, collaboration and contact copy,
-     whose words are too long for the phone measure to justify evenly; headings, labels, list items,
-     timeline captions and controls. */
+     the small-print footer disclaimer (visible gaps when justified at 12.8px); headings, labels,
+     list items, timeline captions and controls. */
 .schematic-note,
-.frontier > p:not(.frontier-num):not(.frontier-tag),
-.footer-bottom p:last-child {
+.frontier > p:not(.frontier-num):not(.frontier-tag) {
   text-align: justify;
   -webkit-hyphens: auto;
   hyphens: auto;
@@ -1138,6 +1140,7 @@ cite { font-style: normal; }
 }
 .collaborate-actions .text-link {
   align-self: flex-start;
+  text-wrap: balance;
   font-size: 0.94rem;
   color: var(--text-2);
   text-decoration-color: var(--line-2);

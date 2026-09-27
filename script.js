@@ -56,7 +56,7 @@
     });
 
     /* Close the mobile menu if the viewport grows past the mobile breakpoint */
-    var mobileMediaQuery = window.matchMedia("(min-width: 900px)");
+    var mobileMediaQuery = window.matchMedia("(min-width: 1024px)");
     var handleViewportChange = function (event) {
       if (event.matches) closeNav();
     };

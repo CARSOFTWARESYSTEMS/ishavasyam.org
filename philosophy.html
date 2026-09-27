@@ -42,13 +42,14 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;family=Inter:wght@400;500;600;700&amp;family=Noto+Serif+Devanagari:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Fonts are self-hosted (OFL); the two faces used on the first screen are preloaded. -->
+<link rel="preload" href="/assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 
-<!-- Hero art: preload the AVIF only. Browsers without AVIF skip this by type and take the WebP from
-     <picture>; preloading both made AVIF-capable browsers download the hero twice. -->
-<link rel="preload" as="image" href="/images/ishavasyam-space-research-hero-wallpaper-v1.avif" type="image/avif" fetchpriority="high">
+<!-- Hero art (LCP): preload only the AVIF this viewport will use — a portrait crop on phones, the full
+     artwork elsewhere. Browsers without AVIF skip these by type and take the WebP from <picture>. -->
+<link rel="preload" as="image" type="image/avif" fetchpriority="high" media="(max-width: 767px) and (orientation: portrait)" href="/images/ishavasyam-philosophy-hero-phone.avif">
+<link rel="preload" as="image" type="image/avif" fetchpriority="high" media="not all and (max-width: 767px) and (orientation: portrait)" href="/images/ishavasyam-space-research-hero-wallpaper-v1.avif">
 <link rel="stylesheet" href="/styles.css">
 
 <script type="application/ld+json">
@@ -141,6 +142,9 @@
   <section class="hero" id="top" aria-labelledby="hero-heading">
     <div class="hero-media" aria-hidden="false">
       <picture>
+        <!-- phones (portrait): the region of the artwork a phone actually shows, 546×941 px from the source -->
+        <source media="(max-width: 767px) and (orientation: portrait)" srcset="/images/ishavasyam-philosophy-hero-phone.avif" type="image/avif">
+        <source media="(max-width: 767px) and (orientation: portrait)" srcset="/images/ishavasyam-philosophy-hero-phone.webp" type="image/webp">
         <source srcset="/images/ishavasyam-space-research-hero-wallpaper-v1.avif" type="image/avif">
         <source srcset="/images/ishavasyam-space-research-hero-wallpaper-v1.webp" type="image/webp">
         <img
@@ -209,8 +213,8 @@
         <div class="guru-portrait">
           <div class="guru-frame">
             <picture>
-              <source srcset="/images/ishavasyam-guru-statue.avif" type="image/avif">
-              <source srcset="/images/ishavasyam-guru-statue.webp" type="image/webp">
+              <source srcset="/images/ishavasyam-guru-statue-480.avif 480w, /images/ishavasyam-guru-statue-840.avif 840w" sizes="(min-width: 1300px) 420px, (min-width: 768px) 365px, 290px" type="image/avif">
+              <source srcset="/images/ishavasyam-guru-statue-480.webp 480w, /images/ishavasyam-guru-statue-840.webp 840w" sizes="(min-width: 1300px) 420px, (min-width: 768px) 365px, 290px" type="image/webp">
               <img
                 src="/images/ishavasyam-guru-statue.jpg"
                 alt="Bronze statue of the revered Guru seated in a meditative posture with a raised blessing gesture."

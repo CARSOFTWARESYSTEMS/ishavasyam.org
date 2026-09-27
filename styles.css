@@ -3,6 +3,42 @@
    Stylesheet
    ========================================================= */
 
+/* Self-hosted (SIL Open Font License 1.1; licences in /assets/fonts): Cormorant Garamond (display),
+   Inter (body — the same file the Space Station page uses, so it is cached across pages) and
+   Noto Serif Devanagari 600 (Sanskrit). Variable woff2 subsets from Google Fonts. */
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url("/assets/fonts/cormorant-garamond-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: italic;
+  font-weight: 500 600;
+  font-display: swap;
+  src: url("/assets/fonts/cormorant-garamond-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/assets/fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Noto Serif Devanagari";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/assets/fonts/noto-serif-devanagari-600-devanagari.woff2") format("woff2");
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+
 :root {
   --background-primary: #050619;
   --background-secondary: #11143b;
@@ -100,16 +136,19 @@ button {
   padding-right: var(--site-gutter-r);
 }
 /* Header: brand on the left content edge, navigation centred on the site axis, action on the
-   right content edge. The side tracks never shrink below their content, so nothing overlaps. */
-@media (min-width: 900px) {
+   right content edge. Both pages switch between the collapsed menu and this layout at 1024px —
+   the same breakpoint as the Space Station desktop hero, and the narrowest width at which the
+   six-item Space Station navigation still fits centred beside its logo. */
+@media (min-width: 1024px) {
   .site-header .container.header-shell {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     column-gap: 1.5rem;
   }
-  .site-header .header-shell > :first-child { justify-self: start; }
-  .site-header .header-shell > :last-child { justify-self: end; }
+  .site-header .header-shell > :first-child { grid-column: 1; justify-self: start; }
+  .site-header .header-shell > .primary-nav { grid-column: 2; }
+  .site-header .header-shell > :last-child { grid-column: 3; justify-self: end; }
 }
 /* ==== end site shell ============================================================== */
 
@@ -372,7 +411,7 @@ section {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-@media (max-width: 899px) {
+@media (max-width: 1023px) {
   .primary-nav {
     position: fixed;
     inset-block-start: var(--site-header-h);
@@ -425,7 +464,7 @@ section {
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .mobile-cta {
     display: none;
   }
@@ -554,6 +593,27 @@ section {
   .hero-media img {
     object-position: 77% 14%;
   }
+  /* Phones: sized to the hero, the art put Vishnu's face (~38% down the source) in the same band
+     as the heading. Instead the art box is one screen tall — whatever height the text gives the
+     hero — and lifted by 10%, so the face sits ~28% down the screen; the text never starts above
+     40% of the screen, and the art fades out beneath it. */
+  .hero {
+    padding-top: max(calc(var(--site-header-h) + 2.5rem), 40vh);
+    padding-top: max(calc(var(--site-header-h) + 2.5rem), 40svh);
+  }
+  .hero-media {
+    bottom: auto;
+    top: -10vh;
+    top: -10svh;
+    height: 100vh;
+    height: 100svh;
+    -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
+  }
+}
+/* the phone crop (see philosophy.html) is centred on the same region object-position 77% selected */
+@media (max-width: 767px) and (orientation: portrait) {
+  .hero-media img { object-position: 50% 14%; }
   .hero-scrim {
     background:
       linear-gradient(0deg, rgba(5, 7, 24, 0.97) 10%, rgba(5, 7, 24, 0.55) 45%, rgba(5, 7, 24, 0.35) 65%, rgba(5, 7, 24, 0.7) 100%);

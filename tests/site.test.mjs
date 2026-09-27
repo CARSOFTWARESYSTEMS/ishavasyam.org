@@ -294,6 +294,19 @@ test("both pages share one site shell: identical container tokens, container pri
   assert.match(read("philosophy.html"), /<header class="site-header">\s*<div class="container header-shell">/);
 });
 
+test("both pages self-host their fonts: no third-party font CSS, every font file and licence present", () => {
+  for (const [html, css] of [[home, read("assets/css/home.css")], [philosophy, read("styles.css")]]) {
+    assert.doesNotMatch(html + css, /fonts\.googleapis\.com|fonts\.gstatic\.com/);
+    const files = [...css.matchAll(/url\("\/(assets\/fonts\/[^"]+\.woff2)"\)/g)].map((m) => m[1]);
+    assert.ok(files.length >= 3, "font faces declared");
+    for (const f of files) assert.ok(existsSync(new URL(`../${f}`, import.meta.url)), `font file exists: ${f}`);
+    for (const m of html.matchAll(/<link rel="preload" href="\/(assets\/fonts\/[^"]+)"/g)) assert.ok(files.includes(m[1]), `preloaded font is declared: ${m[1]}`);
+  }
+  for (const family of ["Inter", "Manrope", "NotoSerifDevanagari", "CormorantGaramond"]) {
+    assert.ok(existsSync(new URL(`../assets/fonts/OFL-${family}.txt`, import.meta.url)), `OFL licence for ${family}`);
+  }
+});
+
 test("'Space Station Digital Twin' appears in a few meaningful places, not as keyword repetition", () => {
   const n = visibleText(home).split("Space Station Digital Twin").length - 1;
   assert.ok(n >= 3 && n <= 6, `visible occurrences: ${n}`);
