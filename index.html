@@ -16,7 +16,7 @@
   gtag('config', 'G-BXZ9C642NH');
 </script>
 <title>Space Station Research &amp; Engineering | ISHAVASYAM.ORG</title>
-<meta name="description" content="ISHAVASYAM.ORG is a Space Station research and engineering initiative focused on developing the capability to design complete space stations from first principles through advanced research, simulation and experimentation.">
+<meta name="description" content="ISHAVASYAM.ORG is a Space Station research and engineering initiative exploring digital twins and simulation to design complete space stations from first principles.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <link rel="canonical" href="https://ishavasyam.org/">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
@@ -27,7 +27,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ISHAVASYAM.ORG">
 <meta property="og:title" content="ISHAVASYAM.ORG | SPACE STATION — Research · Engineering · Experimentation">
-<meta property="og:description" content="A Space Station research and engineering initiative developing the capability to research, design and engineer a complete space station from first principles.">
+<meta property="og:description" content="A Space Station research and engineering initiative developing the capability to research, design and engineer a complete space station from first principles, with Space Station Digital Twin and simulation research at the core of its current work.">
 <meta property="og:url" content="https://ishavasyam.org/">
 <meta property="og:image" content="https://ishavasyam.org/images/station/ishavasyam-space-station-og.jpg">
 <meta property="og:image:secure_url" content="https://ishavasyam.org/images/station/ishavasyam-space-station-og.jpg">
@@ -40,7 +40,7 @@
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ISHAVASYAM.ORG | SPACE STATION — Research · Engineering · Experimentation">
-<meta name="twitter:description" content="A Space Station research and engineering initiative developing the capability to research, design and engineer a complete space station from first principles.">
+<meta name="twitter:description" content="A Space Station research and engineering initiative developing the capability to research, design and engineer a complete space station from first principles, with Space Station Digital Twin and simulation research at the core of its current work.">
 <meta name="twitter:image" content="https://ishavasyam.org/images/station/ishavasyam-space-station-og.jpg">
 <meta name="twitter:image:alt" content="ISHAVASYAM.ORG | SPACE STATION — an original conceptual space station in low Earth orbit above Earth's atmospheric limb.">
 
@@ -77,12 +77,16 @@
       "alternateName": "ISHAVASYAM.ORG",
       "url": "https://ishavasyam.org/",
       "slogan": "Research · Engineering · Experimentation",
-      "description": "ISHAVASYAM.ORG is a Space Station research and engineering initiative. Its mission is to develop the capability to research, design and engineer a complete space station from first principles, advancing the systems, technologies and experimental research required for future human space infrastructure. A physical ISHAVASYAM.ORG Space Station Research Lab is planned and is not yet operational.",
+      "description": "ISHAVASYAM.ORG is a Space Station research and engineering initiative. Its mission is to develop the capability to research, design and engineer a complete space station from first principles, advancing the systems, technologies and experimental research required for future human space infrastructure. Its current digital research is developing a Space Station Digital Twin: a digital representation of the station and its interconnected systems for modelling, simulation, analysis and experimental research. A physical ISHAVASYAM.ORG Space Station Research Lab is planned and is not yet operational.",
       "logo": "https://ishavasyam.org/apple-touch-icon.png",
       "knowsAbout": [
         "Space station research",
         "Space station engineering",
         "Space station architecture",
+        "Space station digital twin",
+        "Space station simulation",
+        "Space station modelling",
+        "Space station systems engineering",
         "Autonomous systems and space station health management",
         "Space station power and energy systems",
         "Space station life support",
@@ -110,6 +114,14 @@
       }
     },
     {
+      "@type": "ResearchProject",
+      "@id": "https://ishavasyam.org/#digital-twin",
+      "name": "Space Station Digital Twin research",
+      "url": "https://ishavasyam.org/#digital-twin",
+      "description": "Digital-twin research capability in development at ISHAVASYAM.ORG: a digital representation of the station and its interconnected systems for modelling, simulation, analysis and experimental research. It is intended to integrate models and data across station architecture, autonomous systems and station health, power and energy, life support, avionics and communications, and robotics and operations. It is not a complete or validated operational digital twin.",
+      "parentOrganization": { "@id": "https://ishavasyam.org/#initiative" }
+    },
+    {
       "@type": "Project",
       "@id": "https://ishavasyam.org/#research-lab",
       "name": "ISHAVASYAM.ORG Space Station Research Lab (planned)",
@@ -121,10 +133,10 @@
       "@id": "https://ishavasyam.org/#webpage",
       "url": "https://ishavasyam.org/",
       "name": "Space Station Research & Engineering | ISHAVASYAM.ORG",
-      "description": "ISHAVASYAM.ORG is a Space Station research and engineering initiative focused on developing the capability to design complete space stations from first principles through advanced research, simulation and experimentation.",
+      "description": "ISHAVASYAM.ORG is a Space Station research and engineering initiative exploring digital twins and simulation to design complete space stations from first principles.",
       "inLanguage": "en-IN",
       "isPartOf": { "@id": "https://ishavasyam.org/#website" },
-      "about": { "@id": "https://ishavasyam.org/#initiative" },
+      "about": [{ "@id": "https://ishavasyam.org/#initiative" }, { "@id": "https://ishavasyam.org/#digital-twin" }],
       "mainEntity": { "@id": "https://ishavasyam.org/#initiative" },
       "primaryImageOfPage": { "@id": "https://ishavasyam.org/#hero-image" },
       "significantLink": ["https://aerospace.ishavasyam.org/space/space-station"],
@@ -161,6 +173,7 @@
 
     <nav class="primary-nav" id="primary-nav" aria-label="Primary">
       <a href="#mission">Research</a>
+      <a href="#digital-twin">Digital Twin</a>
       <a href="#frontiers">Frontiers</a>
       <a href="#lab">Research Lab</a>
       <a href="/philosophy" data-cta="explore_ishavasyam_philosophy" data-cta-location="navigation" data-link-type="internal">Philosophy</a>
@@ -237,6 +250,19 @@
       <div class="mission-grid">
         <div class="mission-text">
           <p class="lead"><strong>ISHAVASYAM.ORG is a Space Station research and engineering initiative.</strong> A space station is not a single spacecraft subsystem: it is integrated, long-duration orbital infrastructure where architecture, energy, life support, autonomy, avionics, robotics, operations and human safety must function as one system.</p>
+
+          <section class="twin" id="digital-twin" aria-labelledby="twin-title">
+            <p class="twin-state"><span class="status status--current">Developing</span></p>
+            <h3 id="twin-title">Space Station Digital Twin</h3>
+            <p>ISHAVASYAM.ORG is developing digital-twin research capabilities for a Space Station Digital Twin &mdash; a digital representation of the station and its interconnected systems for modelling, simulation, analysis and experimental research.</p>
+            <p>The aim is to study subsystem interactions, operating scenarios, anomalies and energy flows before physical experimentation and validation.</p>
+            <div class="twin-flow">
+              <p class="twin-row twin-row--current"><span class="twin-row-state">Current &middot; digital</span> <span class="twin-steps"><span>Model</span> <span>Simulate</span> <span>Analyse</span></span></p>
+              <p class="twin-row twin-row--planned"><span class="twin-row-state">Planned &middot; with the Research Lab</span> <span class="twin-steps"><span>Experiment</span> <span>Validate</span></span></p>
+            </div>
+            <p class="twin-note">In development &mdash; not a complete or validated operational twin.</p>
+            <a class="text-link" href="https://aerospace.ishavasyam.org/space/space-station#digital-twin" data-cta="explore_space_station_digital_twin" data-cta-location="digital_twin" data-link-type="external_research_platform">Explore the digital-twin simulator&nbsp;<span aria-hidden="true">&rarr;</span></a>
+          </section>
         </div>
 
         <figure class="schematic" id="schematic">
@@ -270,7 +296,7 @@
 
         <dl class="facts">
           <div><dt>Mission</dt><dd>First-principles Space Station R&amp;D</dd></div>
-          <div><dt>Current work</dt><dd>Digital research &amp; simulation</dd></div>
+          <div><dt>Current work</dt><dd>Space Station Digital Twin, modelling &amp; simulation</dd></div>
           <div><dt>Research lab</dt><dd><span class="status status--planned">Planned</span> <span class="facts-note">Not yet operational</span></dd></div>
           <div><dt>Organisation</dt><dd>iTelematics Software Private Limited</dd></div>
         </dl>
@@ -284,7 +310,7 @@
       <div class="section-head">
         <p class="eyebrow">Research programme</p>
         <h2 id="frontiers-title">Six research frontiers</h2>
-        <p class="section-intro">Each frontier is a research programme in its own right. The harder problem is how they couple: power bounds life support, autonomy depends on avionics, and every architectural decision constrains operations.</p>
+        <p class="section-intro">Each frontier is a research programme in its own right. The harder problem is how they couple: power bounds life support, autonomy depends on avionics, and every architectural decision constrains operations. The Space Station Digital Twin is being developed as the integration layer across all six, bringing their models and data into one representation of the station.</p>
       </div>
 
       <ol class="frontier-list">
@@ -316,10 +342,12 @@
             <summary>Explore research scope</summary>
             <ul>
               <li>Telemetry intelligence and subsystem health monitoring</li>
+              <li>System-state estimation against digital-twin models</li>
               <li>Anomaly detection and fault isolation</li>
-              <li>Degradation prediction</li>
+              <li>Degradation modelling and prediction</li>
               <li>Mission-impact assessment</li>
-              <li>Fault-tolerant operations and redundancy management</li>
+              <li>What-if simulation for operational decision support</li>
+              <li>Fault-tolerant operations, redundancy and reconfiguration studies</li>
               <li>Safe-mode management</li>
               <li>Supervised autonomous recovery</li>
               <li>Resilient station operations</li>
@@ -433,19 +461,19 @@
       <div class="section-head">
         <p class="eyebrow">Long-term research capability</p>
         <h2 id="lab-title"><span class="status status--planned status--lg">Planned</span> ISHAVASYAM.ORG Space Station Research Lab</h2>
-        <p class="section-intro">The Research Lab is a planned physical capability &mdash; it does not yet exist. Today the initiative&rsquo;s research is digital. The lab is intended to carry that work from models and simulation into subsystem experiments, hardware-in-the-loop testing and integrated validation.</p>
+        <p class="section-intro">The Research Lab is a planned physical capability &mdash; it does not yet exist. Today the initiative&rsquo;s research is digital, centred on the Space Station Digital Twin. The lab is intended to carry that work from models and simulation into subsystem experiments, hardware-in-the-loop testing and integrated validation.</p>
       </div>
 
       <ol class="pipeline">
         <li class="step step--current">
           <h3><span class="step-num">01</span> Model</h3>
-          <span class="step-state">Current &middot; digital</span>
-          <p>Architecture and subsystem models from first principles</p>
+          <span class="step-state">Current &middot; digital twin</span>
+          <p>Architecture and subsystem models from first principles &mdash; the foundations of the digital twin</p>
         </li>
         <li class="step step--current">
           <h3><span class="step-num">02</span> Simulate</h3>
-          <span class="step-state">Current &middot; digital</span>
-          <p>Mission, environment and fault simulation; digital-twin concepts</p>
+          <span class="step-state">Current &middot; digital twin</span>
+          <p>Mission, environment and fault simulation; analysis of subsystem interactions</p>
         </li>
         <li class="step step--planned">
           <h3><span class="step-num">03</span> Experiment</h3>
@@ -455,7 +483,7 @@
         <li class="step step--planned">
           <h3><span class="step-num">04</span> Validate</h3>
           <span class="step-state">Planned</span>
-          <p>Verification of models against measured behaviour</p>
+          <p>Validation of digital-twin models against measured behaviour</p>
         </li>
         <li class="step step--planned">
           <h3><span class="step-num">05</span> Integrate</h3>
@@ -467,12 +495,12 @@
       <div class="lab-split">
         <div class="lab-col lab-col--current">
           <p class="lab-col-state"><span class="status status--current">Current</span></p>
-          <h3>Digital research</h3>
-          <p>Architecture studies, subsystem models and interactive simulations, published through the Space Station Research platform.</p>
+          <h3>Digital twin research</h3>
+          <p>Digital-twin architecture, subsystem models and interactive simulations for Space Station systems engineering, published through the Space Station Research platform.</p>
           <ul>
             <li>Station architecture and configuration studies</li>
             <li>Subsystem models and simulations</li>
-            <li>Digital-twin concepts</li>
+            <li>Digital-twin architecture</li>
             <li>Station-health and fault-management research</li>
           </ul>
           <a class="text-link" href="https://aerospace.ishavasyam.org/space/space-station" data-cta="explore_space_station_research" data-cta-location="lab" data-link-type="external_research_platform">Open the Space Station Research platform&nbsp;<span aria-hidden="true">&rarr;</span></a>

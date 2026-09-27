@@ -145,6 +145,7 @@ test("required CTAs are wired with the documented analytics contract", () => {
   assert.deepEqual(find("explore_space_research", "collaboration"), { href: "https://aerospace.ishavasyam.org/space", name: "explore_space_research", location: "collaboration", type: "external_research_platform" });
   assert.deepEqual(find("contact_sudarshana_phone", "contact"), { href: "tel:+919845561518", name: "contact_sudarshana_phone", location: "contact", type: "phone" });
   assert.deepEqual(find("view_sudarshana_profile", "contact"), { href: "https://aerospace.ishavasyam.org/about/sudarshana-karkala", name: "view_sudarshana_profile", location: "contact", type: "external_profile" });
+  assert.deepEqual(find("explore_space_station_digital_twin", "digital_twin"), { href: "https://aerospace.ishavasyam.org/space/space-station#digital-twin", name: "explore_space_station_digital_twin", location: "digital_twin", type: "external_research_platform" });
   for (const loc of ["footer", "header", "navigation"]) assert.ok(ctas.some((c) => c.location === loc), `CTA at ${loc}`);
   // hero has exactly one call to action
   const heroHtml = home.slice(home.indexOf('class="hero"'), home.indexOf("<!-- ================= THE RESEARCH MISSION"));
@@ -216,9 +217,46 @@ test("frontiers are six accessible disclosures, collapsed by default, each tagge
     assert.match(attrs, /data-frontier="[a-z_]+"/);
     assert.equal(label, "Explore research scope");
   }
-  // the detailed research scope is preserved (not deleted) — 38 scope items in total
+  // the detailed research scope is preserved (not deleted) — 40 scope items in total
+  // (38 originally, plus digital-twin state estimation and what-if simulation under station health)
   const scope = home.slice(home.indexOf('<ol class="frontier-list">'), home.indexOf("</ol>", home.indexOf('<ol class="frontier-list">')));
-  assert.equal((scope.match(/<li>/g) || []).length, 38);
+  assert.equal((scope.match(/<li>/g) || []).length, 40);
+});
+
+test("Space Station Digital Twin is crawlable, supporting the mission, and described as research in development", () => {
+  // the primary identity is unchanged
+  assert.match(home, /<span class="hero-org">ISHAVASYAM\.ORG<\/span><span class="hero-sep" aria-hidden="true"> \| <\/span><span class="hero-main">Space Station<\/span>/);
+  assert.doesNotMatch(attr(home, /<title>([^<]*)<\/title>/), /Digital Twin/, "title stays concise");
+  const heroHtml = home.slice(home.indexOf('class="hero"'), home.indexOf("<!-- ================= THE RESEARCH MISSION"));
+  assert.doesNotMatch(heroHtml, /digital twin/i, "hero is not overloaded");
+  // visible, semantic HTML — not only metadata
+  assert.match(home, /<section class="twin" id="digital-twin" aria-labelledby="twin-title">/);
+  assert.match(home, /<h3 id="twin-title">Space Station Digital Twin<\/h3>/);
+  const text = visibleText(home);
+  assert.match(text, /ISHAVASYAM\.ORG is developing digital-twin research capabilities/);
+  assert.match(text, /a digital representation of the station and its interconnected systems for modelling, simulation, analysis and experimental research/);
+  assert.match(text, /integration layer across all six/);
+  assert.match(text, /not a complete or validated operational twin/);
+  // accurate status: no claim of an operational, deployed or real-time twin
+  for (const re of [/digital twin (is|has been) (operational|deployed|validated|complete)/i, /real-time (operations|monitoring|control)/i, /operational digital twin(?! research)/i]) {
+    for (const m of text.matchAll(new RegExp(re, "gi"))) assert.match(text.slice(Math.max(0, m.index - 40), m.index), /not a complete or validated\s*$|not\s*$/, `overclaim: ${m[0]}`);
+  }
+  assert.match(attr(home, /<meta name="description" content="([^"]*)"/), /digital twins/);
+  // structured data mirrors the visible content and never presents the twin as software or a product
+  const ld = jsonLd(home);
+  const byId = Object.fromEntries(ld["@graph"].map((n) => [n["@id"], n]));
+  const twin = byId["https://ishavasyam.org/#digital-twin"];
+  assert.equal(twin["@type"], "ResearchProject");
+  assert.match(twin.description, /not a complete or validated operational digital twin/);
+  assert.equal(twin.parentOrganization["@id"], "https://ishavasyam.org/#initiative");
+  assert.ok(byId["https://ishavasyam.org/#webpage"].about.some((a) => a["@id"] === "https://ishavasyam.org/#digital-twin"));
+  assert.ok(!ld["@graph"].some((n) => /SoftwareApplication|Product|Dataset/.test(n["@type"])));
+  // current vs planned stages stay explicit
+  assert.match(text, /Current · digital Model Simulate Analyse/);
+  assert.match(text, /Planned · with the Research Lab Experiment Validate/);
+  // no separate thin URL
+  assert.doesNotMatch(read("sitemap.xml"), /digital-twin/);
+  assert.match(read("llms.txt"), /Space Station Digital Twin/);
 });
 
 test("research problem shows four compact facts after the schematic", () => {

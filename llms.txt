@@ -9,13 +9,21 @@ Research · Engineering · Experimentation
 - What it is: a Space Station research and engineering initiative (a research platform, not an incorporated space company).
 - Mission: develop the capability to research, design and engineer a complete space station from first principles.
 - Research frontiers: station architecture; autonomous systems and station health; power and energy; life support; avionics and communications; robotics and operations.
-- Current research emphasis: autonomous systems and station health (telemetry intelligence, anomaly detection, fault isolation, degradation prediction, safe-mode management and supervised autonomous recovery).
-- Current work: digital research — architecture studies, subsystem models and simulation.
+- Current digital research direction: Space Station Digital Twin, modelling and simulation.
+- Current research emphasis: autonomous systems and station health (telemetry intelligence, system-state estimation, anomaly detection, fault isolation, degradation modelling and prediction, what-if simulation for operational decision support, safe-mode management and supervised autonomous recovery).
 - Research lab: an ISHAVASYAM.ORG Space Station Research Lab is planned. It does not yet exist and is not operational.
 - Intended collaborators: PhD and postdoctoral researchers, space scientists, senior engineers, principal engineers, chief architects, CTOs, research institutions and space-industry experts.
 - Organisational context: an initiative of iTelematics Software Private Limited, Bangalore, India.
 - The station shown on the website is an original conceptual architecture for illustration. It is not an engineered, approved or built design.
 - ISHAVASYAM.ORG does not claim affiliation with, or endorsement by, any government space agency or space programme.
+
+## Space Station Digital Twin
+
+- What it is: research into digital representations of integrated Space Station systems for modelling, simulation, analysis and future experimental validation — a digital representation of the station and its interconnected systems.
+- Status: a digital research capability in development. It is not a complete or validated operational digital twin, and it is not used to operate any spacecraft.
+- Role: the integration layer across the six research frontiers, bringing their models and data into one representation of the station to study subsystem interactions, operating scenarios, anomalies and energy flows before physical experimentation.
+- Stages: model, simulate and analyse (current, digital); experiment and validate (planned, with the Research Lab).
+- An interactive digital-twin simulator with failure injection across station systems is published on the Space Station Research platform: https://aerospace.ishavasyam.org/space/space-station#digital-twin
 
 ## Research platforms
 
