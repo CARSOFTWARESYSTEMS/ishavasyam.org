@@ -233,9 +233,8 @@ test("Space Station Digital Twin is crawlable, supporting the mission, and descr
   assert.match(home, /<section class="twin" id="digital-twin" aria-labelledby="twin-title">/);
   assert.match(home, /<h3 id="twin-title">Space Station Digital Twin<\/h3>/);
   const text = visibleText(home);
-  assert.match(text, /ISHAVASYAM\.ORG is developing digital-twin research capabilities/);
-  assert.match(text, /a digital representation of the station and its interconnected systems for modelling, simulation, analysis and experimental research/);
-  assert.match(text, /integration layer across all six/);
+  assert.match(text, /ISHAVASYAM\.ORG is developing a Space Station Digital Twin — a digital representation of Space Station architecture and its interconnected systems for modelling, simulation, analysis and experimental research/);
+  assert.match(text, /The Space Station Digital Twin acts as an integration layer across all six research frontiers/);
   assert.match(text, /not a complete or validated operational twin/);
   // accurate status: no claim of an operational, deployed or real-time twin
   for (const re of [/digital twin (is|has been) (operational|deployed|validated|complete)/i, /real-time (operations|monitoring|control)/i, /operational digital twin(?! research)/i]) {
@@ -272,6 +271,32 @@ test("lab progression is numbered and keeps current vs planned states", () => {
   assert.deepEqual(steps, [
     ["01", "Model", "current"], ["02", "Simulate", "current"], ["03", "Experiment", "planned"], ["04", "Validate", "planned"], ["05", "Integrate", "planned"],
   ]);
+});
+
+test("both pages share one site shell: identical container tokens, container primitive and header geometry", () => {
+  const block = (css) => {
+    const start = css.indexOf("/* ==== ISHAVASYAM.ORG site shell");
+    const end = css.indexOf("/* ==== end site shell");
+    assert.ok(start >= 0 && end > start, "shell block present");
+    return css.slice(start, end);
+  };
+  const home = read("assets/css/home.css");
+  const phil = read("styles.css");
+  assert.equal(block(home), block(phil), "shell block must be byte-identical in home.css and styles.css");
+  for (const css of [home, phil]) {
+    // nothing outside the shell redefines the content width or the gutter
+    const rest = css.replace(block(css), "");
+    assert.doesNotMatch(rest, /--site-(max|gutter|header-h)\s*:/);
+    assert.doesNotMatch(rest, /max-width:\s*var\(--site-max\)/);
+    assert.doesNotMatch(rest, /--container(-width)?\s*:|--header-height\s*:/, "no legacy per-page width tokens");
+  }
+  assert.match(read("index.html"), /<div class="container header-inner header-shell">/);
+  assert.match(read("philosophy.html"), /<header class="site-header">\s*<div class="container header-shell">/);
+});
+
+test("'Space Station Digital Twin' appears in a few meaningful places, not as keyword repetition", () => {
+  const n = visibleText(home).split("Space Station Digital Twin").length - 1;
+  assert.ok(n >= 3 && n <= 6, `visible occurrences: ${n}`);
 });
 
 test("desktop and stacked hero compositions use the same media condition in HTML, CSS and JS", () => {

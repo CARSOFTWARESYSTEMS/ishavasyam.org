@@ -20,9 +20,6 @@
   --font-body: "Inter", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
   --font-devanagari: "Noto Serif Devanagari", "Noto Sans Devanagari", serif;
 
-  --container-width: 1200px;
-  --header-height: 76px;
-
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -82,16 +79,39 @@ button {
   cursor: pointer;
 }
 
+/* ==== ISHAVASYAM.ORG site shell ==================================================
+   Identical in assets/css/home.css and styles.css — tests/site.test.mjs fails if they drift.
+   System A, full bleed: sections, hero art, the 3D scene and page-wide rules span the viewport.
+   System B, content grid: every logo, heading, paragraph, control and footer line sits in
+   .container — one max width and one fluid gutter (18px at 320, ~22px at 390, 24px at 430,
+   40px from ~715px up), widened to the safe area on notched screens. */
+:root {
+  --site-max: 1240px;
+  --site-gutter: clamp(18px, 5.6vw, 40px);
+  --site-gutter-l: max(var(--site-gutter), env(safe-area-inset-left, 0px));
+  --site-gutter-r: max(var(--site-gutter), env(safe-area-inset-right, 0px));
+  --site-header-h: 64px;
+}
 .container {
   width: 100%;
-  max-width: var(--container-width);
+  max-width: var(--site-max);
   margin-inline: auto;
-  padding-inline: 1.5rem;
+  padding-left: var(--site-gutter-l);
+  padding-right: var(--site-gutter-r);
 }
-
-@media (min-width: 768px) {
-  .container { padding-inline: 2.5rem; }
+/* Header: brand on the left content edge, navigation centred on the site axis, action on the
+   right content edge. The side tracks never shrink below their content, so nothing overlaps. */
+@media (min-width: 900px) {
+  .site-header .container.header-shell {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    column-gap: 1.5rem;
+  }
+  .site-header .header-shell > :first-child { justify-self: start; }
+  .site-header .header-shell > :last-child { justify-self: end; }
 }
+/* ==== end site shell ============================================================== */
 
 /* Visually-hidden but accessible */
 .visually-hidden {
@@ -223,11 +243,12 @@ section {
   inset-block-start: 0;
   inset-inline: 0;
   z-index: 100;
-  height: var(--header-height);
+  height: var(--site-header-h);
   display: flex;
   align-items: center;
   background: transparent;
-  border-bottom: 1px solid transparent;
+  /* a faint full-bleed rule: the header band spans the viewport, as on the Space Station page */
+  border-bottom: 1px solid rgba(215, 181, 103, 0.1);
   transition: background 0.35s var(--ease), border-color 0.35s var(--ease), backdrop-filter 0.35s var(--ease);
 }
 
@@ -314,6 +335,13 @@ section {
   gap: 1rem;
 }
 
+/* same header-action geometry as the Space Station page (40px); the gold pill stays Philosophy's own */
+.header-actions .btn {
+  min-height: 40px;
+  padding: 0.5rem 1.15rem;
+  font-size: 0.87rem;
+}
+
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -347,14 +375,14 @@ section {
 @media (max-width: 899px) {
   .primary-nav {
     position: fixed;
-    inset-block-start: var(--header-height);
+    inset-block-start: var(--site-header-h);
     inset-inline: 0;
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
     background: var(--background-primary);
     border-bottom: 1px solid rgba(215, 181, 103, 0.18);
-    padding: 0.5rem 1.5rem 1.5rem;
+    padding: 0.5rem var(--site-gutter-r) 1.5rem var(--site-gutter-l);
     transform: translateY(-8px);
     opacity: 0;
     visibility: hidden;
@@ -409,7 +437,7 @@ section {
   min-height: 100svh;
   display: flex;
   align-items: center;
-  padding-block: calc(var(--header-height) + 2.5rem) 4rem;
+  padding-block: calc(var(--site-header-h) + 2.5rem) 4rem;
   overflow: hidden;
 }
 
@@ -430,9 +458,15 @@ section {
   position: absolute;
   inset: 0;
   z-index: 1;
+  /* The text-safe zone follows the shared content column (its centre sits 18rem inside the left
+     content edge) instead of darkening the browser edges, so the artwork reaches both viewport
+     edges on wide screens rather than sitting in a dark frame. */
+  --text-x: calc(max(0px, (100% - var(--site-max)) / 2) + var(--site-gutter-l) + 18rem);
   background:
-    linear-gradient(100deg, rgba(5, 7, 24, 0.94) 0%, rgba(5, 7, 24, 0.82) 26%, rgba(9, 10, 34, 0.4) 52%, rgba(9, 10, 34, 0.18) 68%, rgba(5, 7, 24, 0.5) 100%),
-    linear-gradient(0deg, rgba(5, 7, 24, 0.85) 0%, rgba(5, 7, 24, 0) 30%, rgba(5, 7, 24, 0) 70%, rgba(5, 7, 24, 0.55) 100%);
+    radial-gradient(ellipse 58rem 46rem at var(--text-x) 56%, rgba(5, 7, 24, 0.84) 0%, rgba(5, 7, 24, 0.6) 42%, rgba(5, 7, 24, 0) 74%),
+    linear-gradient(90deg, rgba(5, 7, 24, 0.5) 0%, rgba(5, 7, 24, 0.18) 42%, rgba(5, 7, 24, 0) 62%),
+    linear-gradient(0deg, rgba(5, 7, 24, 0.85) 0%, rgba(5, 7, 24, 0) 28%),
+    linear-gradient(180deg, rgba(5, 7, 24, 0.5) 0%, rgba(5, 7, 24, 0) 18%);
 }
 
 .hero-content {
@@ -518,7 +552,7 @@ section {
     padding-block-end: 3.5rem;
   }
   .hero-media img {
-    object-position: 74% 14%;
+    object-position: 77% 14%;
   }
   .hero-scrim {
     background:
@@ -530,6 +564,13 @@ section {
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .hero-media img { object-position: 68% 22%; }
+}
+
+/* Portrait tablets: the art is scaled to the viewport height, so only the horizontal focal point
+   matters. Vishnu's face sits at ~78% of the source width; 83% places it at ~72% of the screen,
+   clear of the text column, instead of cut by the right edge. */
+@media (min-width: 768px) and (orientation: portrait) {
+  .hero-media img { object-position: 83% 24%; }
 }
 
 /* ---------- Vision ---------- */
@@ -923,6 +964,9 @@ section {
 
 .section-connect .btn {
   margin-top: 2.3rem;
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
 }
 
 .connect-note {

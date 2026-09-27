@@ -136,7 +136,7 @@ try {
     ok(got[0] && got[0]["ep.destination_url"] === dest, `${name} destination_url = ${got[0] && got[0]["ep.destination_url"]}`);
   }
   const twin = ctas("explore_space_station_digital_twin")[0];
-  ok(twin && twin["ep.cta_location"] === "digital_twin" && twin["ep.link_type"] === "external_research_platform" && twin["ep.cta_text"] === "Explore the digital-twin simulator", `digital-twin params: location=digital_twin, link_type=external_research_platform, text="${twin && twin["ep.cta_text"]}"`);
+  ok(twin && twin["ep.cta_location"] === "digital_twin" && twin["ep.link_type"] === "external_research_platform" && twin["ep.cta_text"] === "Explore the Digital Twin Simulator", `digital-twin params: location=digital_twin, link_type=external_research_platform, text="${twin && twin["ep.cta_text"]}"`);
   const hero = ctas("explore_space_station_research")[0];
   ok(hero && hero["ep.cta_location"] === "hero" && hero["ep.link_type"] === "external_research_platform", "hero params: location=hero, link_type=external_research_platform");
 

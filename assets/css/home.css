@@ -57,14 +57,6 @@
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-deva: "Noto Serif Devanagari", "Kohinoor Devanagari", "Devanagari Sangam MN", "Noto Sans Devanagari", "Nirmala UI", "Mangal", serif;
 
-  /* One content axis for every section: 18px at 320, 20px at 360, 22px at 390, 24px at 430, 40px max.
-     With viewport-fit=cover the axis also clears notches / rounded corners in landscape. */
-  --container: 1240px;
-  --gutter: clamp(18px, 5.6vw, 40px);
-  --gutter-l: max(var(--gutter), env(safe-area-inset-left, 0px));
-  --gutter-r: max(var(--gutter), env(safe-area-inset-right, 0px));
-  --header-h: 64px;
-
   /* vertical rhythm */
   --space-xs: 0.5rem;
   --space-sm: 0.75rem;
@@ -122,15 +114,41 @@ a { color: inherit; }
 address { font-style: normal; }
 cite { font-style: normal; }
 
-[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
+[id] { scroll-margin-top: calc(var(--site-header-h) + 16px); }
 
+/* ==== ISHAVASYAM.ORG site shell ==================================================
+   Identical in assets/css/home.css and styles.css — tests/site.test.mjs fails if they drift.
+   System A, full bleed: sections, hero art, the 3D scene and page-wide rules span the viewport.
+   System B, content grid: every logo, heading, paragraph, control and footer line sits in
+   .container — one max width and one fluid gutter (18px at 320, ~22px at 390, 24px at 430,
+   40px from ~715px up), widened to the safe area on notched screens. */
+:root {
+  --site-max: 1240px;
+  --site-gutter: clamp(18px, 5.6vw, 40px);
+  --site-gutter-l: max(var(--site-gutter), env(safe-area-inset-left, 0px));
+  --site-gutter-r: max(var(--site-gutter), env(safe-area-inset-right, 0px));
+  --site-header-h: 64px;
+}
 .container {
   width: 100%;
-  max-width: var(--container);
+  max-width: var(--site-max);
   margin-inline: auto;
-  padding-left: var(--gutter-l);
-  padding-right: var(--gutter-r);
+  padding-left: var(--site-gutter-l);
+  padding-right: var(--site-gutter-r);
 }
+/* Header: brand on the left content edge, navigation centred on the site axis, action on the
+   right content edge. The side tracks never shrink below their content, so nothing overlaps. */
+@media (min-width: 900px) {
+  .site-header .container.header-shell {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    column-gap: 1.5rem;
+  }
+  .site-header .header-shell > :first-child { justify-self: start; }
+  .site-header .header-shell > :last-child { justify-self: end; }
+}
+/* ==== end site shell ============================================================== */
 
 .visually-hidden {
   position: absolute !important;
@@ -229,7 +247,7 @@ cite { font-style: normal; }
   position: sticky;
   top: 0;
   z-index: 100;
-  height: var(--header-h);
+  height: var(--site-header-h);
   display: flex;
   align-items: center;
   background: rgba(6, 8, 26, 0.86);
@@ -328,13 +346,13 @@ cite { font-style: normal; }
 @media (max-width: 899px) {
   .primary-nav {
     position: fixed;
-    top: var(--header-h);
+    top: var(--site-header-h);
     left: 0;
     right: 0;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    padding: 0.5rem var(--gutter-r) 1.5rem var(--gutter-l);
+    padding: 0.5rem var(--site-gutter-r) 1.5rem var(--site-gutter-l);
     background: var(--bg);
     border-bottom: 1px solid var(--line-2);
     opacity: 0;
@@ -507,8 +525,8 @@ cite { font-style: normal; }
   align-items: center;
   gap: 0.15rem;
   margin-top: -0.35rem;
-  padding-left: var(--gutter-l);
-  padding-right: var(--gutter-r);
+  padding-left: var(--site-gutter-l);
+  padding-right: var(--site-gutter-r);
   font-size: 0.7rem;
   line-height: 1.4;
   text-align: center;
@@ -570,7 +588,7 @@ cite { font-style: normal; }
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: 1fr auto auto 1fr;
-    min-height: clamp(620px, calc(100svh - var(--header-h) - 58px), 1040px);
+    min-height: clamp(620px, calc(100svh - var(--site-header-h) - 58px), 1040px);
   }
   .hero-visual {
     grid-row: 1 / -1;
@@ -600,7 +618,7 @@ cite { font-style: normal; }
     align-self: end;
     justify-self: end;
     align-items: flex-end;
-    margin: 0 var(--gutter-r) 1.5rem 0;
+    margin: 0 var(--site-gutter-r) 1.5rem 0;
     padding: 0;
     font-size: 0.72rem;
     text-align: right;
@@ -753,7 +771,7 @@ cite { font-style: normal; }
     row-gap: 2.5rem;
     align-items: start;
   }
-  .schematic { position: sticky; top: calc(var(--header-h) + 2rem); }
+  .schematic { position: sticky; top: calc(var(--site-header-h) + 2rem); }
 }
 
 .schematic-frame {

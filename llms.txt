@@ -19,9 +19,9 @@ Research · Engineering · Experimentation
 
 ## Space Station Digital Twin
 
-- What it is: research into digital representations of integrated Space Station systems for modelling, simulation, analysis and future experimental validation — a digital representation of the station and its interconnected systems.
+- What it is: a Space Station Digital Twin in development — a digital representation of Space Station architecture and its interconnected systems for modelling, simulation, analysis and experimental research, with future experimental validation planned.
 - Status: a digital research capability in development. It is not a complete or validated operational digital twin, and it is not used to operate any spacecraft.
-- Role: the integration layer across the six research frontiers, bringing their models and data into one representation of the station to study subsystem interactions, operating scenarios, anomalies and energy flows before physical experimentation.
+- Role: an integration layer across the six research frontiers, connecting subsystem models and their interactions at system level, to study operating scenarios, anomalies and energy flows before physical experimentation.
 - Stages: model, simulate and analyse (current, digital); experiment and validate (planned, with the Research Lab).
 - An interactive digital-twin simulator with failure injection across station systems is published on the Space Station Research platform: https://aerospace.ishavasyam.org/space/space-station#digital-twin
 
