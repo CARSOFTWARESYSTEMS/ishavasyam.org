@@ -8,4 +8,5 @@ exclude:
   - tests
   - qa-output
   - README.md
+  - docs
   - .htmlvalidate.json

@@ -17,6 +17,7 @@ Shared: `script.js` (navigation), `assets/js/analytics.js` (GA4 CTA/event abstra
 
 - The poster images in `images/station/` are rendered from the same scene. They are the LCP image and the fallback for no-JS, no-WebGL, reduced-motion and low-power devices.
 - The live canvas is a lazy-loaded enhancement (`assets/js/station.min.js`) that fades in over the poster.
+- Full design and build notes: [`docs/space-station-visual-design.md`](docs/space-station-visual-design.md).
 
 ## Development
 
