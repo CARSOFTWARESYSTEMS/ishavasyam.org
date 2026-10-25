@@ -13,7 +13,7 @@ Research · Engineering · Experimentation
 - Current research emphasis: autonomous systems and station health (telemetry intelligence, system-state estimation, anomaly detection, fault isolation, degradation modelling and prediction, what-if simulation for operational decision support, safe-mode management and supervised autonomous recovery).
 - Research lab: an ISHAVASYAM.ORG Space Station Research Lab is planned. It does not yet exist and is not operational.
 - Intended collaborators: PhD and postdoctoral researchers, space scientists, senior engineers, principal engineers, chief architects, CTOs, research institutions and space-industry experts.
-- Organisational context: an initiative of iTelematics Software Private Limited, Bangalore, India.
+- Organisational context: an initiative of Sudarshana Karkala, ISHAVASYAM.ORG, Bangalore, India.
 - The station shown on the website is an original conceptual architecture for illustration. It is not an engineered, approved or built design.
 - ISHAVASYAM.ORG does not claim affiliation with, or endorsement by, any government space agency or space programme.
 

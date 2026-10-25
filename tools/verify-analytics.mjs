@@ -63,7 +63,7 @@ await ctx.addInitScript(() => {
 // belt and braces: any GA request that still reaches the network layer is dropped
 await ctx.route(/google-analytics\.com|analytics\.google\.com/, (r) => r.abort());
 // external destinations are stubbed so clicks never leave the test
-await ctx.route(/aerospace\.ishavasyam\.org|itelematics\.com/, (r) => r.fulfill({ status: 200, contentType: "text/html", body: "<title>stub</title>stub" }));
+await ctx.route(/aerospace\.ishavasyam\.org/, (r) => r.fulfill({ status: 200, contentType: "text/html", body: "<title>stub</title>stub" }));
 
 const page = await ctx.newPage();
 /** Pull hits recorded on localhost pages into `hits` (call while on a localhost page). */

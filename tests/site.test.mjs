@@ -84,9 +84,9 @@ test("homepage JSON-LD states the entity, mission, frontiers, organisation and p
   assert.match(initiative.description, /Space Station research and engineering initiative/);
   assert.match(initiative.description, /from first principles/);
   assert.match(initiative.description, /planned and is not yet operational/);
-  assert.equal(initiative.parentOrganization["@id"], "https://ishavasyam.org/#itelematics");
-  const org = byId["https://ishavasyam.org/#itelematics"];
-  assert.equal(org.name, "iTelematics Software Private Limited");
+  assert.equal(initiative.parentOrganization["@id"], "https://ishavasyam.org/#organisation");
+  const org = byId["https://ishavasyam.org/#organisation"];
+  assert.equal(org.name, "Sudarshana Karkala, ISHAVASYAM.ORG");
   assert.equal(org.address.addressLocality, "Bangalore");
   const lab = byId["https://ishavasyam.org/#research-lab"];
   assert.match(lab.name, /\(planned\)/);
@@ -115,7 +115,7 @@ test("visible homepage copy supports the key answer-engine facts", () => {
   }
   assert.match(text, /Planned ISHAVASYAM\.ORG Space Station Research Lab/);
   assert.match(text, /does not yet exist/);
-  assert.match(text, /An initiative of iTelematics Software Private Limited/);
+  assert.match(text, /An initiative of Sudarshana Karkala ISHAVASYAM\.ORG/);
   assert.match(text, /Research · Engineering · Experimentation/);
   assert.match(text, /Conceptual Space Station/);
 });
