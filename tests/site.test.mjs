@@ -149,6 +149,7 @@ test("required CTAs are wired with the documented analytics contract", () => {
   assert.deepEqual(find("contact_sudarshana_phone", "contact"), { href: "tel:+919845561518", name: "contact_sudarshana_phone", location: "contact", type: "phone" });
   assert.deepEqual(find("view_sudarshana_profile", "contact"), { href: "https://aerospace.ishavasyam.org/about/sudarshana-karkala", name: "view_sudarshana_profile", location: "contact", type: "external_profile" });
   assert.deepEqual(find("explore_space_station_digital_twin", "digital_twin"), { href: "https://aerospace.ishavasyam.org/space/space-station#digital-twin", name: "explore_space_station_digital_twin", location: "digital_twin", type: "external_research_platform" });
+  assert.deepEqual(find("view_consultancy_services", "navigation"), { href: "/sudarshanakarkala", name: "view_consultancy_services", location: "navigation", type: "internal" });
   for (const loc of ["footer", "header", "navigation"]) assert.ok(ctas.some((c) => c.location === loc), `CTA at ${loc}`);
   // hero has exactly one call to action
   const heroHtml = home.slice(home.indexOf('class="hero"'), home.indexOf("<!-- ================= THE RESEARCH MISSION"));

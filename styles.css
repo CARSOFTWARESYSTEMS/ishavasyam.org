@@ -137,8 +137,8 @@ button {
 }
 /* Header: brand on the left content edge, navigation centred on the site axis, action on the
    right content edge. Both pages switch between the collapsed menu and this layout at 1024px —
-   the same breakpoint as the Space Station desktop hero, and the narrowest width at which the
-   six-item Space Station navigation still fits centred beside its logo. */
+   the same breakpoint as the Space Station desktop hero. The seven-item Space Station navigation
+   fits beside its logo from there and is centred once there is room (~1200px). */
 @media (min-width: 1024px) {
   .site-header .container.header-shell {
     display: grid;
