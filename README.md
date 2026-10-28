@@ -7,6 +7,7 @@ Static site served by GitHub Pages (Jekyll publishes the files as-is; dev toolin
 | --- | --- | --- |
 | `/` | `index.html`, `assets/css/home.css`, `assets/js/home.js` | Space Station research homepage |
 | `/philosophy` | `philosophy.html`, `styles.css` | The former homepage: meaning of Ishavasyam, Isha Upanishad |
+| `/sudarshanakarkala` | `sudarshanakarkala.html`, `assets/css/home.css`, `images/services/` | Sudarshana Karkala (EV.ENGINEER™): Product & Consultancy Services — FAI, Digital Twin |
 
 Shared: `script.js` (navigation), `assets/js/analytics.js` (GA4 CTA/event abstraction).
 

@@ -22,4 +22,16 @@
       <image:loc>https://ishavasyam.org/images/ishavasyam-guru-statue.jpg</image:loc>
     </image:image>
   </url>
+  <url>
+    <loc>https://ishavasyam.org/sudarshanakarkala</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://ishavasyam.org/images/services/fai-as9102-drawing-ballooning-1659.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ishavasyam.org/images/services/digital-twin-design-1672.webp</image:loc>
+    </image:image>
+  </url>
 </urlset>

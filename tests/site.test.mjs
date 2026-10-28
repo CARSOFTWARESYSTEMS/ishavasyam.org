@@ -7,6 +7,7 @@ import { existsSync, readFileSync } from "node:fs";
 const read = (f) => readFileSync(new URL(`../${f}`, import.meta.url), "utf8");
 const home = read("index.html");
 const philosophy = read("philosophy.html");
+const profile = read("sudarshanakarkala.html");
 
 const one = (html, re) => {
   const m = html.match(new RegExp(re, "g")) || [];
@@ -43,7 +44,7 @@ test("philosophy page has independent metadata and canonical", () => {
 });
 
 test("no accidental noindex / nofollow", () => {
-  for (const html of [home, philosophy]) {
+  for (const html of [home, philosophy, profile]) {
     assert.doesNotMatch(html, /noindex|nofollow/i);
   }
 });
@@ -51,10 +52,11 @@ test("no accidental noindex / nofollow", () => {
 test("exactly one H1 per page", () => {
   assert.equal(one(home, "<h1[ >]").length, 1);
   assert.equal(one(philosophy, "<h1[ >]").length, 1);
+  assert.equal(one(profile, "<h1[ >]").length, 1);
 });
 
 test("Open Graph and Twitter metadata point at existing images", () => {
-  for (const html of [home, philosophy]) {
+  for (const html of [home, philosophy, profile]) {
     const og = attr(html, /<meta property="og:image" content="https:\/\/ishavasyam\.org\/([^"]*)"/);
     const tw = attr(html, /<meta name="twitter:image" content="https:\/\/ishavasyam\.org\/([^"]*)"/);
     assert.ok(og && existsSync(new URL(`../${og}`, import.meta.url)), `og:image exists: ${og}`);
@@ -64,10 +66,11 @@ test("Open Graph and Twitter metadata point at existing images", () => {
   }
   assert.equal(attr(home, /<meta property="og:url" content="([^"]*)"/), "https://ishavasyam.org/");
   assert.equal(attr(philosophy, /<meta property="og:url" content="([^"]*)"/), "https://ishavasyam.org/philosophy");
+  assert.equal(attr(profile, /<meta property="og:url" content="([^"]*)"/), "https://ishavasyam.org/sudarshanakarkala");
 });
 
 test("GA4 tag is present exactly once per page with the correct ID", () => {
-  for (const html of [home, philosophy]) {
+  for (const html of [home, philosophy, profile]) {
     assert.equal(one(html, "googletagmanager\\.com/gtag/js\\?id=G-BXZ9C642NH").length, 1);
     assert.equal(one(html, "gtag\\('config'").length, 1);
     assert.match(html, /gtag\('config', 'G-BXZ9C642NH'\)/);
@@ -179,7 +182,7 @@ test("claim-safety guards on the homepage", () => {
 test("sitemap lists exactly the canonical URLs and robots.txt allows crawling", () => {
   const sitemap = read("sitemap.xml");
   const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-  assert.deepEqual(locs, ["https://ishavasyam.org/", "https://ishavasyam.org/philosophy"]);
+  assert.deepEqual(locs, ["https://ishavasyam.org/", "https://ishavasyam.org/philosophy", "https://ishavasyam.org/sudarshanakarkala"]);
   const imgs = [...sitemap.matchAll(/<image:loc>https:\/\/ishavasyam\.org\/([^<]+)<\/image:loc>/g)].map((m) => m[1]);
   for (const i of imgs) assert.ok(existsSync(new URL(`../${i}`, import.meta.url)), `sitemap image exists: ${i}`);
   const robots = read("robots.txt");
@@ -254,7 +257,7 @@ test("Space Station Digital Twin is crawlable, supporting the mission, and descr
   assert.match(text, /Current · digital Model Simulate Analyse/);
   assert.match(text, /Planned · with the Research Lab Experiment Validate/);
   // no separate thin URL
-  assert.doesNotMatch(read("sitemap.xml"), /digital-twin/);
+  assert.doesNotMatch(read("sitemap.xml"), /<loc>[^<]*digital-twin/);
   assert.match(read("llms.txt"), /Space Station Digital Twin/);
 });
 
@@ -321,4 +324,31 @@ test("desktop and stacked hero compositions use the same media condition in HTML
   assert.ok(css.includes(`@media ${WIDE}`));
   assert.ok(css.includes(`@media not all and ${WIDE}`));
   assert.ok(js.includes(`matchMedia("${WIDE}")`));
+});
+
+test("/sudarshanakarkala: name, role and profile link, then FAI and Digital Twin under Product & Consultancy Services", () => {
+  assert.equal(attr(profile, /<link rel="canonical" href="([^"]*)"/), "https://ishavasyam.org/sudarshanakarkala");
+  assert.match(attr(profile, /<title>([^<]*)<\/title>/), /^Sudarshana Karkala \| Product &amp; Consultancy Services/);
+  const text = visibleText(profile);
+  assert.match(text, /Sudarshana Karkala EV\.ENGINEER™/);
+  assert.match(text, /Product & Consultancy Services/);
+  const fai = text.indexOf("FAI AS9102 & Drawing Ballooning Automation");
+  const twin = text.indexOf("Digital Twin Design");
+  assert.ok(text.indexOf("Product & Consultancy Services") < fai && fai < twin, "services in order: FAI, then Digital Twin");
+  const ctas = [...profile.matchAll(/<a [^>]*data-cta="[^"]*"[^>]*>/g)].map((m) => m[0]);
+  const cta = (name, location) => ctas.find((a) => a.includes(`data-cta="${name}"`) && a.includes(`data-cta-location="${location}"`));
+  assert.match(cta("view_sudarshana_profile", "profile"), /href="https:\/\/aerospace\.ishavasyam\.org\/about\/sudarshana-karkala"[^>]*data-link-type="external_profile"/);
+  assert.match(cta("visit_fai_platform", "services"), /href="https:\/\/fai\.ev\.engineer"/);
+  assert.match(cta("explore_space_station_digital_twin", "services"), /href="https:\/\/aerospace\.ishavasyam\.org\/space\/space-station#digital-twin"/);
+  // every referenced service image exists, in both formats
+  const imgs = [...profile.matchAll(/\/images\/services\/[a-z0-9-]+\.(avif|webp|jpg)/g)].map((m) => m[0]);
+  assert.ok(imgs.filter((i) => /\.avif$/.test(i)).length >= 6 && imgs.filter((i) => /\.webp$/.test(i)).length >= 6);
+  for (const i of imgs) assert.ok(existsSync(new URL(`..${i}`, import.meta.url)), `service image exists: ${i}`);
+  // claim safety: the twin stays research in development, and no contact details leak into structured data
+  assert.match(text, /Space Station Digital Twin research in development/);
+  assert.doesNotMatch(text, /validated|operational digital twin|real-time/i);
+  const ld = jsonLd(profile);
+  const byId = Object.fromEntries(ld["@graph"].map((n) => [n["@id"], n]));
+  for (const r of JSON.stringify(ld).match(/"@id":"[^"]+"/g) || []) assert.ok(byId[r.slice(7, -1)], `dangling reference ${r}`);
+  assert.doesNotMatch(JSON.stringify(ld), /telephone|email|9845561518|@gmail/);
 });

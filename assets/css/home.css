@@ -1,5 +1,5 @@
 /* =========================================================
-   ISHAVASYAM.ORG | SPACE STATION — homepage
+   ISHAVASYAM.ORG | SPACE STATION — homepage (also styles /sudarshanakarkala)
    Visual family: aerospace.ishavasyam.org/space (Manrope + Inter, deep navy),
    tuned quieter and more institutional. Gold is reserved for the mantra.
    ========================================================= */
@@ -1191,6 +1191,66 @@ cite { font-style: normal; }
 @media (min-width: 800px) {
   .contact { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; }
 }
+
+/* ---------- Profile page (/sudarshanakarkala) ---------- */
+.person {
+  padding-block: clamp(2.75rem, 6vw + 1rem, 5.5rem) clamp(2.25rem, 4vw + 1rem, 4rem);
+  background: radial-gradient(70% 90% at 85% 0%, rgba(52, 78, 150, 0.14), rgba(6, 8, 26, 0) 70%), var(--bg);
+}
+.person-name {
+  font: 700 clamp(2.2rem, 4vw + 1.1rem, 4.2rem)/1.02 var(--font-head);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.person-role {
+  margin-top: 0.85rem;
+  font: 700 clamp(1rem, 0.6vw + 0.9rem, 1.25rem)/1.3 var(--font-head);
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+.person-place { margin-top: 0.3rem; font-size: 0.95rem; color: var(--text-2); }
+.person .text-link { margin-top: 0.6rem; }
+
+.services {
+  padding-top: clamp(2.75rem, 4vw + 1rem, 5rem);
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+}
+.service-list { display: grid; gap: 3.5rem 2.5rem; }
+@media (min-width: 900px) { .service-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.service { display: flex; flex-direction: column; }
+.service-media {
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  border: 1px solid var(--line-2);
+  border-radius: 14px;
+  background: var(--bg-deep);
+}
+/* one shared frame so both services' text starts on the same line (the artworks differ by ~1.5% in ratio) */
+.service-media img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.service .service-num {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+.service h3 {
+  margin: 0.3rem 0 0.5rem;
+  font-size: clamp(1.3rem, 0.8vw + 1.1rem, 1.6rem);
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.service .service-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.service > p:not(.service-num):not(.service-tag) { margin: 0.9rem 0 0.6rem; font-size: 0.98rem; text-wrap: pretty; }
+/* links share one baseline across the row whatever the description length */
+.service .text-link { margin-top: auto; align-self: flex-start; }
 
 /* ---------- Footer ---------- */
 .site-footer {

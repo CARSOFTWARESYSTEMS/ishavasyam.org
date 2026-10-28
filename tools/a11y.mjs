@@ -8,7 +8,7 @@ const server = await startServer(4186);
 const browser = await chromium.launch({ channel: "chrome" });
 let failures = 0;
 try {
-  for (const [path, w, h] of [["/", 1440, 900], ["/", 390, 844], ["/philosophy", 1440, 900], ["/philosophy", 390, 844]]) {
+  for (const [path, w, h] of [["/", 1440, 900], ["/", 390, 844], ["/philosophy", 1440, 900], ["/philosophy", 390, 844], ["/sudarshanakarkala", 1440, 900], ["/sudarshanakarkala", 390, 844]]) {
     const ctx = await browser.newContext({ viewport: { width: w, height: h }, reducedMotion: "reduce" });
     await ctx.route(/google-analytics\.com|googletagmanager\.com/, (r) => r.abort());
     const page = await ctx.newPage();

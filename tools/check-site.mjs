@@ -3,7 +3,7 @@
 // exist, and (with --external) external links must answer 2xx/3xx.
 import { existsSync, readFileSync } from "node:fs";
 
-const pages = { "/": "index.html", "/philosophy": "philosophy.html" };
+const pages = { "/": "index.html", "/philosophy": "philosophy.html", "/sudarshanakarkala": "sudarshanakarkala.html" };
 const external = process.argv.includes("--external");
 let failures = 0;
 const fail = (m) => { failures++; console.error("✗", m); };

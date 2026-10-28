@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node tools/build-station.mjs",
     "serve": "node tools/serve.mjs",
-    "lint": "html-validate index.html philosophy.html && node tools/check-site.mjs",
+    "lint": "html-validate index.html philosophy.html sudarshanakarkala.html && node tools/check-site.mjs",
     "test": "node --test tests/*.test.mjs",
     "render:posters": "node tools/render-posters.mjs",
     "qa:visual": "node tools/visual-qa.mjs",
